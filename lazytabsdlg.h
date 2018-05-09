@@ -1,7 +1,8 @@
-#ifndef LAZYTABSDLG_H
-#define LAZYTABSDLG_H
+#pragma once
 
 #include <QDialog>
+#include <QGraphicsScene>
+#include "qguitarkeyboard.h"
 
 namespace Ui {
 class LazyTabsDlg;
@@ -15,8 +16,12 @@ public:
     explicit LazyTabsDlg(QWidget *parent = 0);
     ~LazyTabsDlg();
 
+protected:
+    bool DrawKeyboard( void) ;
+
 private:
     Ui::LazyTabsDlg *ui;
+    QGraphicsScene*  m_pScene ;
+    QGuitarKeyboard  m_cKey ;
 };
 
-#endif // LAZYTABSDLG_H

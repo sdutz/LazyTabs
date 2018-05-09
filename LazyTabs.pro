@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        lazytabsdlg.cpp
+        lazytabsdlg.cpp \
+    qguitarkeyboard.cpp
 
 HEADERS += \
-        lazytabsdlg.h
+        lazytabsdlg.h \
+    qguitarkeyboard.h
 
 FORMS += \
         lazytabsdlg.ui

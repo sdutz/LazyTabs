@@ -1,16 +1,16 @@
-#ifndef QGUITARKEYBOARD_H
-#define QGUITARKEYBOARD_H
+#pragma once
 
+#include <QGraphicsScene>
 
-class QGuitarKeyboard : public QMainWindow
-{
-    Q_OBJECT
-public:
-    explicit QGuitarKeyboard(QWidget *parent = nullptr);
+class QGuitarKeyboard {
+    public:
+        explicit QGuitarKeyboard();
+        bool Draw( QGraphicsScene* pScene) ;
 
-signals:
+    protected:
+        void Init() ;
 
-public slots:
+    private:
+        QVector<int> m_anFrets ;
+        QVector<int> m_anStrings ;
 };
-
-#endif // QGUITARKEYBOARD_H
