@@ -7,6 +7,7 @@ LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabs
     ui->setupUi(this);
     m_pScene = new TabsScene( this) ;
     ui->tabsView->setScene( m_pScene);
+    m_pScene->Draw() ;
 }
 
 //----------------------------------------------------------

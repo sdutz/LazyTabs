@@ -7,16 +7,17 @@ namespace Ui {
 class LazyTabsDlg;
 }
 
+//----------------------------------------------------------
 class LazyTabsDlg : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit LazyTabsDlg(QWidget *parent = 0);
-    ~LazyTabsDlg();
+    public:
+        explicit LazyTabsDlg(QWidget *parent = 0);
+        ~LazyTabsDlg();
 
-private:
-    Ui::LazyTabsDlg *ui;
-    TabsScene*       m_pScene ;
+    private:
+        Ui::LazyTabsDlg *ui;
+        TabsScene*       m_pScene ;
 };
 
