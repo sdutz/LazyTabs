@@ -106,7 +106,7 @@ TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
 
     m_anVals[nString].nVal = nFret ;
     if ( nFret > 0) {
-        dPos = ( m_anFrets[nFret] + m_anFrets[nFret-1]) * 0.5 - m_nStringDst * 0.5 ;
+        dPos = ( m_anFrets[nFret] + m_anFrets[nFret-1]) * 0.5 ;
     }
 
     m_anVals[nString].pSymbol->setBrush( GetValBrush( true));
@@ -204,4 +204,19 @@ TabsScene::GetValBrush( bool bActive)
     cBrush.setColor( bActive ? Qt::green : Qt::gray) ;
 
     return cBrush ;
+}
+
+//----------------------------------------------------------
+QString
+TabsScene::GetChord( void)
+{
+    QString szChord ;
+
+    foreach (pos cPos, m_anVals) {
+        szChord += cPos.nVal < 0 ? "X" : QString::number( cPos.nVal) + " ";
+    }
+
+    szChord += "\n" ;
+
+    return szChord ;
 }

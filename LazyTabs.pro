@@ -34,3 +34,6 @@ HEADERS += \
 
 FORMS += \
         lazytabsdlg.ui
+
+RESOURCES += \
+    lazytabs.qrc

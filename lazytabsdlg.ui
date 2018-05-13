@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>300</height>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,8 +23,72 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="addChord">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>260</y>
+     <width>80</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_circle-add_226591.png</normaloff>:/png/res/if_circle-add_226591.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sendToClip">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>360</y>
+     <width>80</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_icon-37-clipboard-upload_315158.png</normaloff>:/png/res/if_icon-37-clipboard-upload_315158.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="songTabs">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>230</y>
+     <width>561</width>
+     <height>231</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="lazytabs.qrc"/>
+ </resources>
  <connections/>
 </ui>

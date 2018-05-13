@@ -16,4 +16,18 @@ LazyTabsDlg::~LazyTabsDlg()
     delete ui;
 }
 
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_addChord_clicked()
+{
+    ui->songTabs->insertPlainText( m_pScene->GetChord()) ;
+}
 
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_sendToClip_clicked()
+{
+    ui->songTabs->selectAll();
+    ui->songTabs->copy() ;
+    ui->songTabs->moveCursor( QTextCursor::End);
+}

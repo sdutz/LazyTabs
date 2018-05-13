@@ -2,6 +2,7 @@
 
 #include <QGraphicsScene>
 
+//----------------------------------------------------------
 struct pos {
     int                    nVal ;
     QGraphicsEllipseItem * pSymbol ;
@@ -19,6 +20,7 @@ class TabsScene : public QGraphicsScene
         TabsScene( QObject* pParent = NULL);
         void SetData( int nStrings, int nFrets, int nStringDst, int nFretsDst);
         bool Draw( void) ;
+        QString GetChord( void) ;
 
     protected:
         void Init( void) ;
