@@ -1,4 +1,5 @@
 #include "tabsscene.h"
+#include <math.h>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsSceneMoveEvent>
 
@@ -45,13 +46,15 @@ TabsScene::mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent)
 bool
 TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
 {
-    int nString ;
+    int    nString ;
+    double dPos ;
 
     if ( pnString == NULL) {
         return false ;
     }
 
-    nString = ptScene.y() / m_nStringDst ;
+    dPos = ptScene.y() / m_nStringDst ;
+    nString = ( dPos - floor( dPos) > 0.5) ? ceil( dPos) : floor( dPos) ;
     if ( nString > m_nStringDst) {
         return false ;
     }
@@ -214,7 +217,7 @@ TabsScene::GetChord( void)
     QString szChord ;
 
     foreach (pos cPos, m_anVals) {
-        szChord += cPos.nVal < 0 ? "X" : QString::number( cPos.nVal) + " ";
+        szChord += cPos.nVal < 0 ? "X " : QString::number( cPos.nVal) + " ";
     }
 
     szChord += "\n" ;
