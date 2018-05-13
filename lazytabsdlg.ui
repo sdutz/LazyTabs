@@ -32,6 +32,9 @@
      <height>71</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>Add chord to list</string>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -57,6 +60,9 @@
      <width>80</width>
      <height>71</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Send song to clipboard</string>
    </property>
    <property name="text">
     <string/>

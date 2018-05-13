@@ -171,6 +171,7 @@ TabsScene::Draw( void)
         addLine(m_anFrets.first(), m_anStrings[n], m_anFrets.last(), m_anStrings[n]) ;
         ptVal.setY( m_anStrings[n] - dHalf);
         cPos.pSymbol = addEllipse( QRect( ptVal, size), cPen, cValBrush) ;
+        cPos.pSymbol->setZValue( 1);
         m_anVals[n]  = cPos ;
     }
 
