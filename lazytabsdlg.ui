@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>477</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>LazyTabs</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="lazytabs.qrc">
+    <normaloff>:/png/res/if_Music_Band_2_753937.png</normaloff>:/png/res/if_Music_Band_2_753937.png</iconset>
   </property>
   <widget class="QGraphicsView" name="tabsView">
    <property name="geometry">
@@ -87,8 +91,37 @@
      <x>40</x>
      <y>230</y>
      <width>561</width>
-     <height>231</height>
+     <height>321</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="config">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>460</y>
+     <width>80</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Send song to clipboard</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_settings_322498.png</normaloff>:/png/res/if_settings_322498.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

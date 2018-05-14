@@ -137,6 +137,8 @@ TabsScene::Init( void)
     for ( int n = 0 ;  n < m_nStrings ;  n ++) {
         m_anStrings[n] = n * nInc ;
     }
+
+    clear();
 }
 
 //----------------------------------------------------------

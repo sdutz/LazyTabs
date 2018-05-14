@@ -2,5 +2,7 @@
     <qresource prefix="/png">
         <file>res/if_circle-add_226591.png</file>
         <file>res/if_icon-37-clipboard-upload_315158.png</file>
+        <file>res/if_settings_322498.png</file>
+        <file>res/if_Music_Band_2_753937.png</file>
     </qresource>
 </RCC>

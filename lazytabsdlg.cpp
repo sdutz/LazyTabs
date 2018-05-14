@@ -1,5 +1,6 @@
 #include "lazytabsdlg.h"
 #include "ui_lazytabsdlg.h"
+#include "settingsdlg.h"
 
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
@@ -30,4 +31,15 @@ LazyTabsDlg::on_sendToClip_clicked()
     ui->songTabs->selectAll();
     ui->songTabs->copy() ;
     ui->songTabs->moveCursor( QTextCursor::End);
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_config_clicked()
+{
+    settingsdlg setdlg( this) ;
+
+    if ( setdlg.exec() == QDialog::Accepted) {
+        m_pScene->Draw() ;
+    }
 }

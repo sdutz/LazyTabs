@@ -21,8 +21,9 @@ class LazyTabsDlg : public QDialog
     private slots:
         void on_addChord_clicked();
         void on_sendToClip_clicked();
+        void on_config_clicked();
 
-    private:
+private:
         Ui::LazyTabsDlg *ui;
         TabsScene*       m_pScene ;
 };

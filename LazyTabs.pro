@@ -26,14 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         lazytabsdlg.cpp \
-    tabsscene.cpp
+    tabsscene.cpp \
+    settingsdlg.cpp
 
 HEADERS += \
         lazytabsdlg.h \
-    tabsscene.h
+    tabsscene.h \
+    settingsdlg.h
 
 FORMS += \
-        lazytabsdlg.ui
+        lazytabsdlg.ui \
+    settingsdlg.ui
 
 RESOURCES += \
     lazytabs.qrc
