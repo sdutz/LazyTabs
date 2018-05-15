@@ -11,7 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="lazytabs.qrc">
+    <normaloff>:/png/res/if_settings_322498.png</normaloff>:/png/res/if_settings_322498.png</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -76,7 +83,9 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="lazytabs.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
