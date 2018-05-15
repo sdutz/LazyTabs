@@ -1,8 +1,8 @@
 #pragma once
 
 #include <QDialog>
-#include <QClipboard>
 #include "tabsscene.h"
+#include "config.h"
 
 //----------------------------------------------------------
 namespace Ui {
@@ -18,13 +18,17 @@ class LazyTabsDlg : public QDialog
         explicit LazyTabsDlg(QWidget *parent = 0);
         ~LazyTabsDlg();
 
+    protected:
+        bool Init() ;
+
     private slots:
         void on_addChord_clicked();
         void on_sendToClip_clicked();
         void on_config_clicked();
 
-private:
+    private:
         Ui::LazyTabsDlg *ui;
+        config           m_conf ;
         TabsScene*       m_pScene ;
 };
 

@@ -8,6 +8,8 @@ int main(int argc, char *argv[])
 
     a.setApplicationDisplayName("Lazy Tabs");
     a.setApplicationVersion( "1.0");
+    a.setOrganizationName("sdutz");
+    a.setApplicationName("Lazy Tabs");
 
     LazyTabsDlg w;
     w.show();

@@ -18,7 +18,7 @@ class TabsScene : public QGraphicsScene
 {
     public:
         TabsScene( QObject* pParent = NULL);
-        void SetData( int nStrings, int nFrets, int nStringDst, int nFretsDst);
+        void SetData( int nStrings, int nFrets);
         bool Draw( void) ;
         QString GetChord( void) ;
 

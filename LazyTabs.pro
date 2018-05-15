@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         lazytabsdlg.cpp \
     tabsscene.cpp \
-    settingsdlg.cpp
+    settingsdlg.cpp \
+    config.cpp
 
 HEADERS += \
         lazytabsdlg.h \
     tabsscene.h \
-    settingsdlg.h
+    settingsdlg.h \
+    config.h
 
 FORMS += \
         lazytabsdlg.ui \

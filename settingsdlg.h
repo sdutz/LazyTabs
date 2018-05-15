@@ -1,22 +1,26 @@
-#ifndef SETTINGSDLG_H
-#define SETTINGSDLG_H
+#pragma once
 
 #include <QDialog>
+#include "config.h"
 
+//----------------------------------------------------------
 namespace Ui {
-class settingsdlg;
+    class settingsdlg;
 }
 
+//----------------------------------------------------------
 class settingsdlg : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit settingsdlg(QWidget *parent = 0);
-    ~settingsdlg();
+    public:
+        explicit settingsdlg(QWidget *parent = 0);
+        ~settingsdlg();
 
-private:
-    Ui::settingsdlg *ui;
+    private slots:
+        void on_settingsdlg_accepted();
+
+    private:
+        config          m_conf ;
+        Ui::settingsdlg *ui;
 };
-
-#endif // SETTINGSDLG_H

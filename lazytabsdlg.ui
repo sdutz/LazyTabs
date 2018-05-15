@@ -105,7 +105,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Send song to clipboard</string>
+    <string>Settings</string>
    </property>
    <property name="text">
     <string/>

@@ -2,13 +2,14 @@
 #include "ui_lazytabsdlg.h"
 #include "settingsdlg.h"
 
+
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
 {
     ui->setupUi(this);
     m_pScene = new TabsScene( this) ;
     ui->tabsView->setScene( m_pScene);
-    m_pScene->Draw() ;
+    Init() ;
 }
 
 //----------------------------------------------------------
@@ -40,6 +41,19 @@ LazyTabsDlg::on_config_clicked()
     settingsdlg setdlg( this) ;
 
     if ( setdlg.exec() == QDialog::Accepted) {
-        m_pScene->Draw() ;
+        Init() ;
     }
+}
+
+//----------------------------------------------------------
+bool
+LazyTabsDlg::Init()
+{
+    int nFrets ;
+    int nStrings ;
+
+    m_conf.GetValues( &nStrings, &nFrets);
+    m_pScene->SetData( nStrings, nFrets) ;
+
+    return m_pScene->Draw() ;
 }

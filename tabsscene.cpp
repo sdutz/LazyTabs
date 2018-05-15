@@ -14,12 +14,10 @@ TabsScene::TabsScene( QObject* pParent /*= NULL*/) : QGraphicsScene( pParent)
 
 //----------------------------------------------------------
 void
-TabsScene::SetData( int nStrings, int nFrets, int nStringDst, int nFretsDst)
+TabsScene::SetData( int nStrings, int nFrets)
 {
     m_nFrets     = nFrets ;
     m_nStrings   = nStrings ;
-    m_nFretDst   = nFretsDst ;
-    m_nStringDst = nStringDst ;
 }
 
 //----------------------------------------------------------
