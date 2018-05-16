@@ -234,25 +234,21 @@ TabsScene::GetChord( void)
 void
 TabsScene::GetSizes( QVector<qreal>* pafSizes)
 {
-    float fSize ;
-
     if ( pafSizes == NULL) {
         return ;
     }
 
     pafSizes->resize( m_nStrings);
-    if ( m_nStrings != 6  &&  m_nStrings != 4) {
-        pafSizes->fill(1) ;
-    }
 
-    fSize = 3.1 ;
-    if ( m_nStrings == 6) {
-        for ( int i = 0 ;  i < 6 ;  i ++) {
-            (*pafSizes)[i] = fSize ;
-            fSize -= 0.5 ;
-        }
-    }
-    else {
-        (*pafSizes) = { 1., 3., 2., 0.5} ;
+    switch (m_nStrings) {
+        case 6:
+            (*pafSizes) = { 3., 2.5, 2., 1.5, 1., 0.5, 0.1} ;
+            break;
+        case 4:
+            (*pafSizes) = { 0.5, 2., 1., 0.1} ;
+            break ;
+        default:
+            pafSizes->fill(1) ;
+            break;
     }
 }
