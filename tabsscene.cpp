@@ -52,8 +52,17 @@ TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
     }
 
     dPos = ptScene.y() / m_nStringDst ;
-    nString = ( dPos - floor( dPos) > 0.5) ? ceil( dPos) : floor( dPos) ;
-    if ( nString > m_nStringDst) {
+    if ( dPos < - m_nStringDst) {
+        return false ;
+    }
+    else if ( dPos < 0) {
+        nString = 0 ;
+    }
+    else {
+        nString = ( dPos - floor( dPos) > 0.5) ? ceil( dPos) : floor( dPos) ;
+    }
+
+    if ( nString >= m_nStrings) {
         return false ;
     }
 
