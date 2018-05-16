@@ -15,7 +15,7 @@ config::GetValues( int* pnStrings, int* pnFrets)
          return ;
     }
 
-    *pnFrets   = m_set.value( m_szFretsKey, 13).toInt() ;
+    *pnFrets   = m_set.value( m_szFretsKey, 14).toInt() ;
     *pnStrings = m_set.value( m_szStringsKey, 6).toInt() ;
 }
 

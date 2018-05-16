@@ -28,6 +28,7 @@ class TabsScene : public QGraphicsScene
         void mousePressEvent( QGraphicsSceneMouseEvent* pEvent);
         void mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent);
         QBrush GetValBrush( bool bActive) ;
+        void GetSizes( QVector<qreal>* pafSizes) ;
 
     private:
         int          m_nFrets ;

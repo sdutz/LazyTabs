@@ -52,8 +52,15 @@ LazyTabsDlg::Init()
     int nFrets ;
     int nStrings ;
 
+    ui->songTabs->clear();
     m_conf.GetValues( &nStrings, &nFrets);
     m_pScene->SetData( nStrings, nFrets) ;
+    if ( nStrings == 6) {
+        ui->songTabs->insertPlainText( "E A D G B e \n\n");
+    }
+    else if ( nStrings == 4) {
+        ui->songTabs->insertPlainText( "g C E A \n\n");
+    }
 
     return m_pScene->Draw() ;
 }

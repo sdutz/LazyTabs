@@ -16,8 +16,8 @@ TabsScene::TabsScene( QObject* pParent /*= NULL*/) : QGraphicsScene( pParent)
 void
 TabsScene::SetData( int nStrings, int nFrets)
 {
-    m_nFrets     = nFrets ;
-    m_nStrings   = nStrings ;
+    m_nFrets   = nFrets ;
+    m_nStrings = nStrings ;
 }
 
 //----------------------------------------------------------
@@ -146,6 +146,7 @@ TabsScene::Draw( void)
     double dHalf ;
     pos    cPos ;
     QPen   cPen ;
+    QPen   cSPen ;
     QSize  size ;
     QPoint ptLow ;
     QPoint ptVal ;
@@ -153,6 +154,7 @@ TabsScene::Draw( void)
     QPoint ptHigh ;
     QBrush cBrush ;
     QBrush cValBrush ;
+    QVector<qreal> afSizes ;
 
     Init();
 
@@ -170,8 +172,11 @@ TabsScene::Draw( void)
         addLine(n, m_anStrings.first(), n, m_anStrings.last());
     }
 
+    GetSizes(&afSizes);
+
     for ( int n = 0 ;  n < m_nStrings ;  n ++) {
-        addLine(m_anFrets.first(), m_anStrings[n], m_anFrets.last(), m_anStrings[n]) ;
+        cSPen.setWidthF(afSizes[n]);
+        addLine(m_anFrets.first(), m_anStrings[n], m_anFrets.last(), m_anStrings[n], cSPen) ;
         ptVal.setY( m_anStrings[n] - dHalf);
         cPos.pSymbol = addEllipse( QRect( ptVal, size), cPen, cValBrush) ;
         cPos.pSymbol->setZValue( 1);
@@ -223,4 +228,31 @@ TabsScene::GetChord( void)
     szChord += "\n" ;
 
     return szChord ;
+}
+
+//----------------------------------------------------------
+void
+TabsScene::GetSizes( QVector<qreal>* pafSizes)
+{
+    float fSize ;
+
+    if ( pafSizes == NULL) {
+        return ;
+    }
+
+    pafSizes->resize( m_nStrings);
+    if ( m_nStrings != 6  &&  m_nStrings != 4) {
+        pafSizes->fill(1) ;
+    }
+
+    fSize = 3.1 ;
+    if ( m_nStrings == 6) {
+        for ( int i = 0 ;  i < 6 ;  i ++) {
+            (*pafSizes)[i] = fSize ;
+            fSize -= 0.5 ;
+        }
+    }
+    else {
+        (*pafSizes) = { 1., 3., 2., 0.5} ;
+    }
 }
