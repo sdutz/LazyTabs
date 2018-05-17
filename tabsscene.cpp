@@ -101,13 +101,10 @@ TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
 {
     int    nFret ;
     int    nString ;
-    double dPos ;
 
     if ( pEvent == NULL) {
         return ;
     }
-
-    dPos = 0 ;
 
     if ( ! Pick( pEvent->scenePos(), &nString, &nFret)  ||
          m_anVals[nString].pSymbol == NULL) {
@@ -115,6 +112,19 @@ TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
     }
 
     m_anVals[nString].nVal = nFret ;
+
+    DrawPos( nString) ;
+}
+
+//----------------------------------------------------------
+void
+TabsScene::DrawPos( int nString)
+{
+    int    nFret ;
+    double dPos = 0. ;
+
+    nFret = m_anVals[nString].nVal ;
+
     if ( nFret > 0) {
         dPos = ( m_anFrets[nFret] + m_anFrets[nFret-1]) * 0.5 ;
     }
@@ -259,5 +269,31 @@ TabsScene::GetSizes( QVector<qreal>* pafSizes)
         default:
             pafSizes->fill(1) ;
             break;
+    }
+}
+
+//----------------------------------------------------------
+void
+TabsScene:: Move( bool bLeft)
+{
+    for ( int i = 0 ;  i < m_anVals.count() ;  i ++) {
+        if ( bLeft  && m_anVals[i].nVal > 0) {
+            m_anVals[i].nVal -- ;
+            DrawPos(i) ;
+        }
+        else if ( ! bLeft  &&  m_anVals[i].nVal < m_nFrets - 1) {
+            m_anVals[i].nVal ++ ;
+            DrawPos(i) ;
+        }
+    }
+}
+
+//----------------------------------------------------------
+void
+TabsScene:: Reset( void)
+{
+    for ( int i = 0 ;  i < m_anVals.count() ;  i ++) {
+        m_anVals[i].nVal = 0 ;
+        DrawPos(i) ;
     }
 }

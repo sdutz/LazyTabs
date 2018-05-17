@@ -21,6 +21,8 @@ class TabsScene : public QGraphicsScene
         void SetData( int nStrings, int nFrets);
         bool Draw( void) ;
         QString GetChord( void) ;
+        void Move( bool bLeft) ;
+        void Reset( void) ;
 
     protected:
         void Init( void) ;
@@ -29,6 +31,7 @@ class TabsScene : public QGraphicsScene
         void mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent);
         QBrush GetValBrush( bool bActive) ;
         void GetSizes( QVector<qreal>* pafSizes) ;
+        void DrawPos( int nString) ;
 
     private:
         int          m_nFrets ;

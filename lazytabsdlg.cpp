@@ -49,8 +49,9 @@ LazyTabsDlg::on_config_clicked()
 bool
 LazyTabsDlg::Init()
 {
-    int nFrets ;
-    int nStrings ;
+    bool  bOk ;
+    int   nFrets ;
+    int   nStrings ;
 
     ui->songTabs->clear();
     m_conf.GetValues( &nStrings, &nFrets);
@@ -62,5 +63,28 @@ LazyTabsDlg::Init()
         ui->songTabs->insertPlainText( "g C E A \n\n");
     }
 
-    return m_pScene->Draw() ;
+    bOk = m_pScene->Draw() ;
+
+    return bOk ;
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_leftShift_clicked()
+{
+    m_pScene->Move( true);
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_rightShift_clicked()
+{
+    m_pScene->Move( false);
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_reset_clicked()
+{
+    m_pScene->Reset();
 }

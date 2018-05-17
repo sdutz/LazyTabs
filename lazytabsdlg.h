@@ -26,7 +26,13 @@ class LazyTabsDlg : public QDialog
         void on_sendToClip_clicked();
         void on_config_clicked();
 
-    private:
+        void on_leftShift_clicked();
+
+        void on_rightShift_clicked();
+
+        void on_reset_clicked();
+
+private:
         Ui::LazyTabsDlg *ui;
         config           m_conf ;
         TabsScene*       m_pScene ;
