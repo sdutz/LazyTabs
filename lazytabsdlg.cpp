@@ -52,6 +52,7 @@ LazyTabsDlg::Init()
     bool  bOk ;
     int   nFrets ;
     int   nStrings ;
+    QFont font ;
 
     ui->songTabs->clear();
     m_conf.GetValues( &nStrings, &nFrets);
@@ -64,6 +65,11 @@ LazyTabsDlg::Init()
     }
 
     bOk = m_pScene->Draw() ;
+
+    ui->tabsView->scale( 1.25, 1.25) ;
+    font = ui->songTabs->font() ;
+    font.setPointSize( font.pointSize() + 2) ;
+    ui->songTabs->setFont( font);
 
     return bOk ;
 }

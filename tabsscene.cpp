@@ -8,7 +8,7 @@ TabsScene::TabsScene( QObject* pParent /*= NULL*/) : QGraphicsScene( pParent)
 {
     m_nFrets     = 14 ;
     m_nStrings   = 6 ;
-    m_nFretDst   = 50 ;
+    m_nFretDst   = 60 ;
     m_nStringDst = 10 ;
 }
 
