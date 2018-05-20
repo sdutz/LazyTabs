@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QTranslator>
 #include "tabsscene.h"
 #include "config.h"
 
@@ -19,7 +20,8 @@ class LazyTabsDlg : public QDialog
         ~LazyTabsDlg();
 
     protected:
-        bool Init() ;
+        bool Init( void) ;
+        bool SetLang( bool bInit) ;
 
     private slots:
         void on_addChord_clicked();
@@ -36,5 +38,6 @@ private:
         Ui::LazyTabsDlg *ui;
         config           m_conf ;
         TabsScene*       m_pScene ;
+        QTranslator      m_cLang ;
 };
 

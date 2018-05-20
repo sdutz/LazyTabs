@@ -8,4 +8,9 @@
         <file>res/if_icon-arrow-right-c_211618.png</file>
         <file>res/if_ic_exposure_zero_48px_352338.png</file>
     </qresource>
+    <qresource prefix="/translations"/>
+    <qresource prefix="/tr">
+        <file>LazyTabs_en.qm</file>
+        <file>LazyTabs_it.qm</file>
+    </qresource>
 </RCC>

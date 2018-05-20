@@ -2,14 +2,20 @@
 #include "ui_lazytabsdlg.h"
 #include "settingsdlg.h"
 
-
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
 {
+    QFont font ;
+
     ui->setupUi(this);
     m_pScene = new TabsScene( this) ;
     ui->tabsView->setScene( m_pScene);
     Init() ;
+    SetLang( true) ;
+    ui->tabsView->scale( 1.25, 1.25) ;
+    font = ui->songTabs->font() ;
+    font.setPointSize( font.pointSize() + 2) ;
+    ui->songTabs->setFont( font);
 }
 
 //----------------------------------------------------------
@@ -42,17 +48,17 @@ LazyTabsDlg::on_config_clicked()
 
     if ( setdlg.exec() == QDialog::Accepted) {
         Init() ;
+        SetLang( false);
     }
 }
 
 //----------------------------------------------------------
 bool
-LazyTabsDlg::Init()
+LazyTabsDlg::Init( void)
 {
-    bool  bOk ;
-    int   nFrets ;
-    int   nStrings ;
-    QFont font ;
+    bool bOk ;
+    int  nFrets ;
+    int  nStrings ;
 
     ui->songTabs->clear();
     m_conf.GetValues( &nStrings, &nFrets);
@@ -65,11 +71,6 @@ LazyTabsDlg::Init()
     }
 
     bOk = m_pScene->Draw() ;
-
-    ui->tabsView->scale( 1.25, 1.25) ;
-    font = ui->songTabs->font() ;
-    font.setPointSize( font.pointSize() + 2) ;
-    ui->songTabs->setFont( font);
 
     return bOk ;
 }
@@ -93,4 +94,22 @@ void
 LazyTabsDlg::on_reset_clicked()
 {
     m_pScene->Reset();
+}
+
+//----------------------------------------------------------
+bool
+LazyTabsDlg::SetLang( bool bInit)
+{
+    bool    bOk ;
+    QString szFile ;
+
+    szFile = QCoreApplication::applicationName() + "_" + m_conf.GetLang() + ".qm" ;
+    szFile.replace( " ", "") ;
+    bOk = m_cLang.load( szFile, ":/tr") ;
+
+    if ( bInit) {
+        bOk = bOk  &&  QCoreApplication::installTranslator( &m_cLang) ;
+    }
+
+    return bOk ;
 }

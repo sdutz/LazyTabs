@@ -3,8 +3,16 @@
 //----------------------------------------------------------
 config::config()
 {
+    m_szLangKey    = "lang" ;
     m_szFretsKey   = "frets" ;
     m_szStringsKey = "strings" ;
+}
+
+//----------------------------------------------------------
+QString
+config::GetLang( void)
+{
+    return m_set.value( m_szLangKey, "eng").toString() ;
 }
 
 //----------------------------------------------------------
@@ -21,8 +29,21 @@ config::GetValues( int* pnStrings, int* pnFrets)
 
 //----------------------------------------------------------
 void
-config::SetValues( int nStrings, int nFrets)
+config::SetValues( int nStrings, int nFrets, const QString& szLang)
 {
-    m_set.setValue( m_szFretsKey, nFrets);
-    m_set.setValue( m_szStringsKey, nStrings);
+    m_set.setValue( m_szLangKey, szLang) ;
+    m_set.setValue( m_szFretsKey, nFrets) ;
+    m_set.setValue( m_szStringsKey, nStrings) ;
+}
+
+//----------------------------------------------------------
+QStringList
+config::GetLangList( void)
+{
+    QStringList lszLangs ;
+
+    lszLangs.append("en");
+    lszLangs.append("it");
+
+    return lszLangs ;
 }
