@@ -28,7 +28,12 @@ LazyTabsDlg::~LazyTabsDlg()
 void
 LazyTabsDlg::on_addChord_clicked()
 {
-    ui->songTabs->insertPlainText( m_pScene->GetChord()) ;
+    QString szChord = m_pScene->GetChord() ;
+
+    if ( ! szChord.isEmpty()) {
+        ui->songTabs->insertPlainText( szChord + "\n") ;
+    }
+
 }
 
 //----------------------------------------------------------

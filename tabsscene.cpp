@@ -2,6 +2,7 @@
 #include <math.h>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsSceneMoveEvent>
+#include <QMessageBox>
 
 //----------------------------------------------------------
 TabsScene::TabsScene( QObject* pParent /*= NULL*/) : QGraphicsScene( pParent)
@@ -240,11 +241,13 @@ TabsScene::GetChord( void)
 {
     QString szChord ;
 
-    foreach (pos cPos, m_anVals) {
-        szChord += cPos.nVal < 0 ? "X " : QString::number( cPos.nVal) + " ";
+    if ( ! isCurrValid()) {
+        return szChord ;
     }
 
-    szChord += "\n" ;
+    foreach ( pos cPos, m_anVals) {
+        szChord += cPos.nVal < 0 ? "X " : QString::number( cPos.nVal) + " ";
+    }
 
     return szChord ;
 }
@@ -296,4 +299,32 @@ TabsScene:: Reset( void)
         m_anVals[i].nVal = 0 ;
         DrawPos(i) ;
     }
+}
+
+//----------------------------------------------------------
+bool
+TabsScene::isCurrValid( void)
+{
+    int nMin ;
+    int nMax ;
+    int nMaxDiff ;
+
+    nMax = 0 ;
+    nMin = m_nFrets ;
+    nMaxDiff = m_nStrings == 4 ? 6 : 4 ;
+
+    foreach ( pos p, m_anVals) {
+        if ( p.nVal > 0) {
+            nMin = qMin( nMin, p.nVal) ;
+            nMax = qMax( nMax, p.nVal) ;
+        }
+    }
+
+    if ( ( nMax - nMin) <= nMaxDiff) {
+        return true ;
+    }
+
+    return QMessageBox::warning( ( QWidget*)x parent(), tr("Warning"),
+                                 tr("this cord will stretch your hand, are you sure it's correct?"),
+                                 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes ;
 }

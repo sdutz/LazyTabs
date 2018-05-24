@@ -32,6 +32,7 @@ class TabsScene : public QGraphicsScene
         QBrush GetValBrush( bool bActive) ;
         void GetSizes( QVector<qreal>* pafSizes) ;
         void DrawPos( int nString) ;
+        bool isCurrValid( void) ;
 
     private:
         int          m_nFrets ;
