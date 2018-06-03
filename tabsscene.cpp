@@ -324,7 +324,7 @@ TabsScene::isCurrValid( void)
         return true ;
     }
 
-    return QMessageBox::warning( ( QWidget*)x parent(), tr("Warning"),
+    return QMessageBox::warning( ( QWidget*) parent(), tr("Warning"),
                                  tr("this cord will stretch your hand, are you sure it's correct?"),
                                  QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes ;
 }
