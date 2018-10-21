@@ -1,42 +1,75 @@
 #include "chordparser.h"
+#include <QFile>
+#include <QTextStream>
 
 //----------------------------------------------------------
 chordParser::chordParser( void)
 {
-    InitMaps() ;
 }
 
 //----------------------------------------------------------
-void
-chordParser::InitMaps( void)
+bool
+chordParser::initMaps( const QString& szDb)
 {
-    m_mGuitar["e+"] = "022100" ;
+    if ( szDb.isEmpty()) {
+        return false ;
+    }
+
+    QFile file( szDb) ;
+    if ( ! file.open( QIODevice::ReadOnly | QIODevice::Text)) {
+        return false ;
+    }
+
+    QStringList slTokens ;
+    QTextStream stream( &file) ;
+
+    while( ! stream.atEnd()) {
+        slTokens = stream.readLine().split( ";") ;
+        if ( slTokens.size() < 2) {
+            continue ;
+        }
+        QStringList slValues = slTokens[1].split( " ") ;
+        for ( int i = 0 ;  i < slValues.size() ;  i ++) {
+            m_mGuitar[slTokens[0]].append( slValues[i].toInt()) ;
+        }
+
+        if ( slTokens.size() == 3) {
+            slValues.clear() ;
+            slValues = slTokens[2].split( " ") ;
+            for ( int i = 0 ;  i < slValues.size() ;  i ++) {
+                m_mUkulele[slTokens[0]].append( slValues[i].toInt()) ;
+            }
+        }
+    }
+
+    return true ;
 }
 
 //----------------------------------------------------------
-QString
-chordParser::parse( const QString& szRaw, chordsMode nMode)
+bool
+chordParser::parse( const QString& szRaw, chordsMode nMode, QVector<int>* pRes)
 {
     QString szRes ;
     QString szInput ;
 
-    if ( szRaw.isEmpty()) {
-        return szRes ;
+    if ( szRaw.isEmpty()  ||  pRes == nullptr) {
+        return false ;
     }
 
+    pRes->clear() ;
     szInput = szRaw.toLower().replace( " ", "") ;
 
     if ( szInput.size() > 3) {
-        return szRes ;
+        return false ;
     }
 
     if ( nMode == GUITAR) {
-        szRes = m_mGuitar[szInput] ;
+        pRes->append( m_mGuitar[szInput]) ;
     }
     else if ( nMode == UKULELE) {
-        szRes = m_mUkulele[szInput] ;
+        pRes->append( m_mUkulele[szInput]) ;
     }
 
-    return szRes ;
+    return true ;
 }
 

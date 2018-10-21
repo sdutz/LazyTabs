@@ -6,6 +6,14 @@ config::config()
     m_szLangKey    = "lang" ;
     m_szFretsKey   = "frets" ;
     m_szStringsKey = "strings" ;
+    m_szDbFileKey  = "dbfile" ;
+}
+
+//----------------------------------------------------------
+QString
+config::GetDbFile( void)
+{
+    return m_set.value( m_szDbFileKey, "db.txt").toString() ;
 }
 
 //----------------------------------------------------------
@@ -29,11 +37,12 @@ config::GetValues( int* pnStrings, int* pnFrets)
 
 //----------------------------------------------------------
 void
-config::SetValues( int nStrings, int nFrets, const QString& szLang)
+config::SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile)
 {
     m_set.setValue( m_szLangKey, szLang) ;
     m_set.setValue( m_szFretsKey, nFrets) ;
     m_set.setValue( m_szStringsKey, nStrings) ;
+    m_set.setValue( m_szDbFileKey, szDBFile) ;
 }
 
 //----------------------------------------------------------

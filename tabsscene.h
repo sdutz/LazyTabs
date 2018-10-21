@@ -23,7 +23,7 @@ class TabsScene : public QGraphicsScene
         QString GetChord( void) ;
         void Move( bool bLeft) ;
         void Reset( void) ;
-        bool SetChord( const QString& szChord) ;
+        bool SetChord( const QVector<int>& anVals) ;
 
     protected:
         void Init( void) ;

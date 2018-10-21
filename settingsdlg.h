@@ -20,6 +20,8 @@ class settingsdlg : public QDialog
     private slots:
         void on_settingsdlg_accepted();
 
+        void on_dbBtn_clicked();
+
 private:
         config          m_conf ;
         Ui::settingsdlg *ui;

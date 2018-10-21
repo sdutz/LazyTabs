@@ -332,10 +332,14 @@ TabsScene::isCurrValid( void)
 
 //----------------------------------------------------------
 bool
-TabsScene::SetChord( const QString& szChord)
+TabsScene::SetChord( const QVector<int>& anVals)
 {
-    for ( int n = 0 ;  n < szChord.size() ;  n ++) {
-        m_anVals[n].nVal = QString( szChord[n]).toInt() ;
+    if ( m_anVals.size() != anVals.size()) {
+        return false ;
+    }
+
+    for ( int n = 0 ;  n < m_anVals.size() ;  n ++) {
+        m_anVals[n].nVal = anVals[n] ;
         DrawPos(n) ;
     }
 

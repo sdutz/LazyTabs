@@ -1,6 +1,7 @@
 #pragma once
 
 #include<QString>
+#include<QVector>
 #include<QMap>
 
 enum chordsMode {
@@ -13,12 +14,12 @@ class chordParser
 {
     public :
         chordParser( void) ;
-        QString parse( const QString& szRaw, chordsMode nMode) ;
+        bool initMaps( const QString& szDb) ;
+        bool parse( const QString& szRaw, chordsMode nMode, QVector<int>* pRes) ;
 
     protected :
-        void InitMaps( void) ;
 
     private :
-        QMap<QString,QString> m_mGuitar ;
-        QMap<QString,QString> m_mUkulele ;
+        QMap<QString,QVector<int>> m_mGuitar ;
+        QMap<QString,QVector<int>> m_mUkulele ;
 } ;

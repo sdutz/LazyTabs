@@ -67,6 +67,7 @@ LazyTabsDlg::Init( void)
     int  nStrings ;
 
     ui->songTabs->clear();
+    m_parser.initMaps( m_conf.GetDbFile()) ;
     m_conf.GetValues( &nStrings, &nFrets) ;
     m_pScene->SetData( nStrings, nFrets) ;
     if ( nStrings == 6) {
@@ -147,7 +148,8 @@ LazyTabsDlg::on_insertChord_clicked()
         return ;
     }
 
-    if ( ! szVal.isEmpty()  &&  bOk) {
-        m_pScene->SetChord( m_parser.parse( szVal, nMode)) ;
+    QVector<int> anVals ;
+    if ( ! szVal.isEmpty()  &&  bOk  &&  m_parser.parse( szVal, nMode, &anVals)) {
+        m_pScene->SetChord( anVals) ;
     }
 }
