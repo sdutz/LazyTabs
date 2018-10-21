@@ -125,13 +125,29 @@ void
 LazyTabsDlg::on_insertChord_clicked()
 {
     bool         bOk ;
+    int          nVal ;
+    int          nStrings ;
+    chordsMode   nMode ;
     QString      szVal ;
     QInputDialog cInput ;
 
     cInput.setInputMode( QInputDialog::InputMode::TextInput) ;
-    szVal = cInput.getText( this, tr("Type your chord"), tr("eg : D+"), QLineEdit::Normal, "", &bOk) ;
+    szVal = cInput.getText( this, tr("Type your chord"), tr("eg : D#+"), QLineEdit::Normal, "", &bOk) ;
+    if ( ! bOk) {
+        return ;
+    }
+    m_conf.GetValues( &nStrings, &nVal) ;
+    if ( nStrings == 6) {
+        nMode = chordsMode::GUITAR ;
+    }
+    else if ( nStrings == 4) {
+        nMode = chordsMode::UKULELE ;
+    }
+    else {
+        return ;
+    }
 
     if ( ! szVal.isEmpty()  &&  bOk) {
-        m_pScene->SetChord( szVal) ;
+        m_pScene->SetChord( m_parser.parse( szVal, nMode)) ;
     }
 }

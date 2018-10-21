@@ -4,6 +4,7 @@
 #include <QTranslator>
 #include "tabsscene.h"
 #include "config.h"
+#include "chordparser.h"
 
 //----------------------------------------------------------
 namespace Ui {
@@ -39,6 +40,7 @@ class LazyTabsDlg : public QDialog
 private:
         Ui::LazyTabsDlg *ui;
         config           m_conf ;
+        chordParser      m_parser ;
         TabsScene*       m_pScene ;
         QTranslator      m_cLang ;
 };
