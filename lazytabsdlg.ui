@@ -129,7 +129,7 @@
     <rect>
      <x>40</x>
      <y>220</y>
-     <width>171</width>
+     <width>151</width>
      <height>41</height>
     </rect>
    </property>
@@ -153,9 +153,9 @@
   <widget class="QPushButton" name="rightShift">
    <property name="geometry">
     <rect>
-     <x>530</x>
+     <x>380</x>
      <y>220</y>
-     <width>171</width>
+     <width>151</width>
      <height>41</height>
     </rect>
    </property>
@@ -179,9 +179,9 @@
   <widget class="QPushButton" name="reset">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>210</x>
      <y>220</y>
-     <width>171</width>
+     <width>151</width>
      <height>41</height>
     </rect>
    </property>
@@ -194,6 +194,32 @@
    <property name="icon">
     <iconset resource="lazytabs.qrc">
      <normaloff>:/png/res/if_ic_exposure_zero_48px_352338.png</normaloff>:/png/res/if_ic_exposure_zero_48px_352338.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="insertChord">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>220</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Insert chord by name</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_pencil5_216687.png</normaloff>:/png/res/if_pencil5_216687.png</iconset>
    </property>
    <property name="iconSize">
     <size>

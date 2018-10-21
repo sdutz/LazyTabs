@@ -9,7 +9,7 @@ struct pos {
 
     pos() {
         nVal    = 0 ;
-        pSymbol = NULL ;
+        pSymbol = nullptr ;
     }
 } ;
 
@@ -17,16 +17,17 @@ struct pos {
 class TabsScene : public QGraphicsScene
 {
     public:
-        TabsScene( QObject* pParent = NULL);
+        TabsScene( QObject* pParent = nullptr);
         void SetData( int nStrings, int nFrets);
         bool Draw( void) ;
         QString GetChord( void) ;
         void Move( bool bLeft) ;
         void Reset( void) ;
+        bool SetChord( const QString& szChord) ;
 
     protected:
         void Init( void) ;
-        bool Pick( const QPointF& ptScene, int* pnString, int* pnFret = NULL) ;
+        bool Pick( const QPointF& ptScene, int* pnString, int* pnFret = nullptr) ;
         void mousePressEvent( QGraphicsSceneMouseEvent* pEvent);
         void mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent);
         QBrush GetValBrush( bool bActive) ;

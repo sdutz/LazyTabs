@@ -19,7 +19,7 @@ config::GetLang( void)
 void
 config::GetValues( int* pnStrings, int* pnFrets)
 {
-    if ( pnStrings == NULL  ||  pnFrets == NULL) {
+    if ( pnStrings == nullptr  ||  pnFrets == nullptr) {
          return ;
     }
 

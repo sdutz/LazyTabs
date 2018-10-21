@@ -27,12 +27,12 @@ TabsScene::mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent)
 {
     int nString ;
 
-    if ( pEvent == NULL){
+    if ( pEvent == nullptr){
         return ;
     }
 
     if ( ! Pick( pEvent->scenePos(), &nString)  ||
-         m_anVals[nString].pSymbol == NULL) {
+         m_anVals[nString].pSymbol == nullptr) {
         return ;
     }
 
@@ -48,7 +48,7 @@ TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
     int    nString ;
     double dPos ;
 
-    if ( pnString == NULL) {
+    if ( pnString == nullptr) {
         return false ;
     }
 
@@ -60,7 +60,7 @@ TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
         nString = 0 ;
     }
     else {
-        nString = ( dPos - floor( dPos) > 0.5) ? ceil( dPos) : floor( dPos) ;
+        nString = static_cast<int>( ( dPos - floor( dPos) > 0.5) ? ceil( dPos) : floor( dPos)) ;
     }
 
     if ( nString >= m_nStrings) {
@@ -69,7 +69,7 @@ TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
 
     *pnString = nString ;
 
-    if ( pnFret == NULL){
+    if ( pnFret == nullptr){
         return true ;
     }
 
@@ -103,12 +103,12 @@ TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
     int    nFret ;
     int    nString ;
 
-    if ( pEvent == NULL) {
+    if ( pEvent == nullptr) {
         return ;
     }
 
     if ( ! Pick( pEvent->scenePos(), &nString, &nFret)  ||
-         m_anVals[nString].pSymbol == NULL) {
+         m_anVals[nString].pSymbol == nullptr) {
         return ;
     }
 
@@ -183,10 +183,10 @@ TabsScene::Draw( void)
     dHalf = m_nStringDst * 0.5 ;
     size.setWidth( m_nStringDst) ;
     size.setHeight( m_nStringDst) ;
-    ptVal.setX( - dHalf);
-    ptLow.setY( m_anStrings.last() * 0.33 - dHalf) ;
-    ptHalf.setY( m_anStrings.last() * 0.5 - dHalf) ;
-    ptHigh.setY(m_anStrings.last() * 0.66 - dHalf) ;
+    ptVal.setX( static_cast<int>( - dHalf)) ;
+    ptLow.setY( static_cast<int>( m_anStrings.last() * 0.33 - dHalf)) ;
+    ptHalf.setY( static_cast<int>( m_anStrings.last() * 0.5 - dHalf)) ;
+    ptHigh.setY( static_cast<int>( m_anStrings.last() * 0.66 - dHalf)) ;
 
     foreach (int n, m_anFrets) {
         addLine(n, m_anStrings.first(), n, m_anStrings.last());
@@ -197,7 +197,7 @@ TabsScene::Draw( void)
     for ( int n = 0 ;  n < m_nStrings ;  n ++) {
         cSPen.setWidthF(afSizes[n]);
         addLine(m_anFrets.first(), m_anStrings[n], m_anFrets.last(), m_anStrings[n], cSPen) ;
-        ptVal.setY( m_anStrings[n] - dHalf);
+        ptVal.setY( static_cast<int>( m_anStrings[n] - dHalf)) ;
         cPos.pSymbol = addEllipse( QRect( ptVal, size), cPen, cValBrush) ;
         cPos.pSymbol->setZValue( 1);
         m_anVals[n]  = cPos ;
@@ -209,13 +209,13 @@ TabsScene::Draw( void)
         }
 
         if( n % 12 == 0) {
-            ptHigh.setX(( m_anFrets[n] + m_anFrets[n-1]) * 0.5 - dHalf) ;
+            ptHigh.setX( static_cast<int>( ( m_anFrets[n] + m_anFrets[n-1]) * 0.5 - dHalf)) ;
             ptLow.setX( ptHigh.x());
             addEllipse( QRect(ptHigh, size), cPen, cBrush) ;
             addEllipse( QRect(ptLow, size), cPen, cBrush) ;
         }
         else if ( n % 2 != 0  ||  n == 1) {
-            ptHalf.setX(( m_anFrets[n] + m_anFrets[n-1]) * 0.5 - dHalf) ;
+            ptHalf.setX( static_cast<int>( ( m_anFrets[n] + m_anFrets[n-1]) * 0.5 - dHalf)) ;
             addEllipse( QRect(ptHalf, size), cPen, cBrush) ;
         }
     }
@@ -256,7 +256,7 @@ TabsScene::GetChord( void)
 void
 TabsScene::GetSizes( QVector<qreal>* pafSizes)
 {
-    if ( pafSizes == NULL) {
+    if ( pafSizes == nullptr) {
         return ;
     }
 
@@ -324,7 +324,20 @@ TabsScene::isCurrValid( void)
         return true ;
     }
 
-    return QMessageBox::warning( ( QWidget*) parent(), tr("Warning"),
+    return QMessageBox::warning( static_cast<QWidget*> (parent()), tr("Warning"),
                                  tr("this cord will stretch your hand, are you sure it's correct?"),
                                  QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes ;
+}
+
+
+//----------------------------------------------------------
+bool
+TabsScene::SetChord( const QString& szChord)
+{
+    for ( int n = 0 ;  n < szChord.size() ;  n ++) {
+        m_anVals[n].nVal = QString( szChord[n]).toInt() ;
+        DrawPos(n) ;
+    }
+
+    return true ;
 }

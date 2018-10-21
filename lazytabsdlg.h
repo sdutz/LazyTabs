@@ -16,7 +16,7 @@ class LazyTabsDlg : public QDialog
     Q_OBJECT
 
     public:
-        explicit LazyTabsDlg(QWidget *parent = 0);
+        explicit LazyTabsDlg(QWidget *parent = nullptr);
         ~LazyTabsDlg();
 
     protected:
@@ -33,6 +33,8 @@ class LazyTabsDlg : public QDialog
         void on_rightShift_clicked();
 
         void on_reset_clicked();
+
+        void on_insertChord_clicked();
 
 private:
         Ui::LazyTabsDlg *ui;

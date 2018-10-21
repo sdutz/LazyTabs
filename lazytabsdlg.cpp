@@ -1,6 +1,7 @@
 #include "lazytabsdlg.h"
 #include "ui_lazytabsdlg.h"
 #include "settingsdlg.h"
+#include <QInputDialog>
 
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
@@ -66,7 +67,7 @@ LazyTabsDlg::Init( void)
     int  nStrings ;
 
     ui->songTabs->clear();
-    m_conf.GetValues( &nStrings, &nFrets);
+    m_conf.GetValues( &nStrings, &nFrets) ;
     m_pScene->SetData( nStrings, nFrets) ;
     if ( nStrings == 6) {
         ui->songTabs->insertPlainText( "E A D G B e \n\n");
@@ -117,4 +118,20 @@ LazyTabsDlg::SetLang( bool bInit)
     }
 
     return bOk ;
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_insertChord_clicked()
+{
+    bool         bOk ;
+    QString      szVal ;
+    QInputDialog cInput ;
+
+    cInput.setInputMode( QInputDialog::InputMode::TextInput) ;
+    szVal = cInput.getText( this, tr("Type your chord"), tr("eg : D+"), QLineEdit::Normal, "", &bOk) ;
+
+    if ( ! szVal.isEmpty()  &&  bOk) {
+        m_pScene->SetChord( szVal) ;
+    }
 }
