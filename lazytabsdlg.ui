@@ -149,6 +149,9 @@
      <height>32</height>
     </size>
    </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="rightShift">
    <property name="geometry">
@@ -174,6 +177,9 @@
      <width>32</width>
      <height>32</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="reset">
@@ -201,6 +207,9 @@
      <height>32</height>
     </size>
    </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="insertChord">
    <property name="geometry">
@@ -226,6 +235,9 @@
      <width>32</width>
      <height>32</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
