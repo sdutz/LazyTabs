@@ -85,7 +85,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="songTabs">
+  <widget class="QTextEdit" name="songTabs">
    <property name="geometry">
     <rect>
      <x>40</x>

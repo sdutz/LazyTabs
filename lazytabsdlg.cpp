@@ -67,6 +67,7 @@ LazyTabsDlg::Init( void)
     int  nStrings ;
 
     ui->songTabs->clear();
+    ui->songTabs->setAlignment( Qt::AlignCenter) ;
     m_parser.initMaps( m_conf.GetDbFile()) ;
     m_conf.GetValues( &nStrings, &nFrets) ;
     m_pScene->SetData( nStrings, nFrets) ;
