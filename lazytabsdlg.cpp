@@ -2,6 +2,7 @@
 #include "ui_lazytabsdlg.h"
 #include "settingsdlg.h"
 #include <QInputDialog>
+#include <QKeyEvent>
 
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
@@ -152,5 +153,33 @@ LazyTabsDlg::on_insertChord_clicked()
     QVector<int> anVals ;
     if ( ! szVal.isEmpty()  &&  bOk  &&  m_parser.parse( szVal, nMode, &anVals)) {
         m_pScene->SetChord( anVals) ;
+    }
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
+{
+    if ( pEvent == nullptr) {
+        return ;
+    }
+
+    if ( pEvent->key() == Qt::Key_A) {
+        return on_addChord_clicked() ;
+    }
+    else if ( pEvent->key() == Qt::Key_C) {
+        return on_sendToClip_clicked() ;
+    }
+    else if ( pEvent->key() == Qt::Key_I) {
+        return on_insertChord_clicked() ;
+    }
+    else if ( pEvent->key() == Qt::Key_L) {
+        return on_leftShift_clicked() ;
+    }
+    else if ( pEvent->key() == Qt::Key_R) {
+        return on_rightShift_clicked() ;
+    }
+    else if ( pEvent->key() == Qt::Key_Z) {
+        return on_reset_clicked() ;
     }
 }

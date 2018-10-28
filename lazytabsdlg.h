@@ -23,6 +23,7 @@ class LazyTabsDlg : public QDialog
     protected:
         bool Init( void) ;
         bool SetLang( bool bInit) ;
+        void keyPressEvent( QKeyEvent* pEvent) ;
 
     private slots:
         void on_addChord_clicked();
