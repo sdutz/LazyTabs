@@ -15,8 +15,9 @@ class chordParser
     public :
         chordParser( void) ;
         bool initMaps( const QString& szDb) ;
+        bool parse( const QString& szRaw, QVector<int>* pRes) ;
         bool parse( const QString& szRaw, chordsMode nMode, QVector<int>* pRes) ;
-
+        bool parseFile( const QString& szFile, QStringList* pRes) ;
     protected :
 
     private :

@@ -45,6 +45,14 @@ config::SetValues( int nStrings, int nFrets, const QString& szLang, const QStrin
     m_set.setValue( m_szDbFileKey, szDBFile) ;
 }
 
+
+//----------------------------------------------------------
+void
+config::SetStrings( int nStrings)
+{
+    m_set.setValue( m_szStringsKey, nStrings) ;
+}
+
 //----------------------------------------------------------
 QStringList
 config::GetLangList( void)

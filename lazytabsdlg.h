@@ -21,7 +21,7 @@ class LazyTabsDlg : public QDialog
         ~LazyTabsDlg();
 
     protected:
-        bool Init( void) ;
+        bool Init( bool bFromFile = false) ;
         bool SetLang( bool bInit) ;
         void keyPressEvent( QKeyEvent* pEvent) ;
 
@@ -29,14 +29,13 @@ class LazyTabsDlg : public QDialog
         void on_addChord_clicked();
         void on_sendToClip_clicked();
         void on_config_clicked();
-
         void on_leftShift_clicked();
-
         void on_rightShift_clicked();
-
         void on_reset_clicked();
-
         void on_insertChord_clicked();
+        void on_exit_clicked();
+        void on_load_clicked();
+        void on_save_clicked();
 
 private:
         Ui::LazyTabsDlg *ui;

@@ -88,9 +88,9 @@
   <widget class="QTextEdit" name="songTabs">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>140</x>
      <y>270</y>
-     <width>561</width>
+     <width>461</width>
      <height>281</height>
     </rect>
    </property>
@@ -98,7 +98,7 @@
   <widget class="QPushButton" name="config">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>40</x>
      <y>480</y>
      <width>80</width>
      <height>71</height>
@@ -234,6 +234,93 @@
     <size>
      <width>32</width>
      <height>32</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="load">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>80</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Load</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_folder-open_1608888.png</normaloff>:/png/res/if_folder-open_1608888.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>380</y>
+     <width>80</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Save</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_save_326688.png</normaloff>:/png/res/if_save_326688.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>480</y>
+     <width>80</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Exit</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_icons_exit_1564505.png</normaloff>:/png/res/if_icons_exit_1564505.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
     </size>
    </property>
    <property name="flat">

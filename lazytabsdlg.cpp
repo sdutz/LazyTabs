@@ -3,6 +3,8 @@
 #include "settingsdlg.h"
 #include <QInputDialog>
 #include <QKeyEvent>
+#include <QFileDialog>
+#include <QTextStream>
 
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
@@ -61,7 +63,7 @@ LazyTabsDlg::on_config_clicked()
 
 //----------------------------------------------------------
 bool
-LazyTabsDlg::Init( void)
+LazyTabsDlg::Init( bool bFromFile)
 {
     bool bOk ;
     int  nFrets ;
@@ -72,11 +74,13 @@ LazyTabsDlg::Init( void)
     m_parser.initMaps( m_conf.GetDbFile()) ;
     m_conf.GetValues( &nStrings, &nFrets) ;
     m_pScene->SetData( nStrings, nFrets) ;
-    if ( nStrings == 6) {
-        ui->songTabs->insertPlainText( "E A D G B e \n\n");
-    }
-    else if ( nStrings == 4) {
-        ui->songTabs->insertPlainText( "g C E A \n\n");
+    if ( ! bFromFile) {
+        if ( nStrings == 6) {
+            ui->songTabs->insertPlainText( "E A D G B e \n\n");
+        }
+        else if ( nStrings == 4) {
+            ui->songTabs->insertPlainText( "g C E A \n\n");
+        }
     }
 
     bOk = m_pScene->Draw() ;
@@ -182,4 +186,50 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
     else if ( pEvent->key() == Qt::Key_Z) {
         return on_reset_clicked() ;
     }
+    else if ( pEvent->key() == Qt::Key_Q) {
+        return on_exit_clicked() ;
+    }
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_exit_clicked()
+{
+    done( QDialog::Accepted) ;
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_load_clicked()
+{
+    QString szFile = QFileDialog::getOpenFileName( this, tr( "Select project file"), "", "*.txt") ;
+    QString szTuning ;
+    QStringList slVals ;
+    QVector<int>anVals ;
+    if ( ! szFile.isEmpty()  &&  m_parser.parseFile( szFile, &slVals)) {
+        szTuning = slVals[0].replace( " ", "") ;
+        m_conf.SetStrings( szTuning.length()) ;
+        Init( true) ;
+        m_parser.parse( slVals.last(), &anVals) ;
+        m_pScene->SetChord( anVals) ;
+        ui->songTabs->insertPlainText( slVals[0] + "\n\n") ;
+        for ( int n = 1 ;  n < slVals.size() ;  n ++) {
+            ui->songTabs->insertPlainText( slVals[n] + "\n") ;
+        }
+    }
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_save_clicked()
+{
+    QString szFile = QFileDialog::getSaveFileName( this, tr( "Select project file"), "", "*.txt") ;
+    QFile file( szFile) ;
+    if ( ! file.open( QIODevice::WriteOnly | QIODevice::Text)) {
+        return ;
+    }
+
+    QTextStream stream( &file) ;
+    stream<< ui->songTabs->toPlainText() ;
+    file.close() ;
 }

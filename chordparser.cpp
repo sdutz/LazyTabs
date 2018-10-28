@@ -42,6 +42,29 @@ chordParser::initMaps( const QString& szDb)
         }
     }
 
+    file.close() ;
+
+    return true ;
+}
+
+//----------------------------------------------------------
+bool
+chordParser::parse( const QString& szRaw, QVector<int>* pRes)
+{
+    QString szRes ;
+    QString szInput ;
+
+    if ( szRaw.isEmpty()  ||  pRes == nullptr) {
+        return false ;
+    }
+
+    QStringList slValues = szRaw.split( " ") ;
+    for ( int n = 0 ;  n < slValues.size() ;  n ++) {
+        if ( ! slValues[n].isEmpty()) {
+            pRes->append( slValues[n].toInt()) ;
+        }
+    }
+
     return true ;
 }
 
@@ -73,3 +96,29 @@ chordParser::parse( const QString& szRaw, chordsMode nMode, QVector<int>* pRes)
     return true ;
 }
 
+//----------------------------------------------------------
+bool
+chordParser::parseFile( const QString& szFile, QStringList* pRes)
+{
+    if ( pRes == nullptr) {
+        return false ;
+    }
+
+    QFile file( szFile) ;
+    if ( ! file.open( QIODevice::ReadOnly | QIODevice::Text)) {
+        return false ;
+    }
+
+    QString szLine ;
+    QTextStream stream( &file) ;
+    while ( ! stream.atEnd()) {
+        szLine = stream.readLine() ;
+        if ( ! szLine.isEmpty()) {
+            pRes->append( szLine) ;
+        }
+    }
+
+    file.close() ;
+
+    return true ;
+}

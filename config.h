@@ -9,6 +9,7 @@ class config
         config();
         QString GetLang( void) ;
         void GetValues( int* pnStrings, int* pnFrets) ;
+        void SetStrings( int nStrings) ;
         void SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile) ;
         QString GetDbFile( void) ;
         QStringList GetLangList( void) ;
