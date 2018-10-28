@@ -36,9 +36,11 @@ class LazyTabsDlg : public QDialog
         void on_exit_clicked();
         void on_load_clicked();
         void on_save_clicked();
+        void closeEvent( QCloseEvent* pEvent) ;
 
 private:
         Ui::LazyTabsDlg *ui;
+        bool             m_bMod ;
         config           m_conf ;
         chordParser      m_parser ;
         TabsScene*       m_pScene ;

@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QMessageBox>
 
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
@@ -13,7 +14,7 @@ LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabs
 
     ui->setupUi(this);
     m_pScene = new TabsScene( this) ;
-    ui->tabsView->setScene( m_pScene);
+    ui->tabsView->setScene( m_pScene) ;
     Init() ;
     SetLang( true) ;
     ui->tabsView->scale( 1.25, 1.25) ;
@@ -38,6 +39,7 @@ LazyTabsDlg::on_addChord_clicked()
         ui->songTabs->insertPlainText( szChord + "\n") ;
     }
 
+    m_bMod = true ;
 }
 
 //----------------------------------------------------------
@@ -84,6 +86,7 @@ LazyTabsDlg::Init( bool bFromFile)
     }
 
     bOk = m_pScene->Draw() ;
+    m_bMod = false ;
 
     return bOk ;
 }
@@ -189,13 +192,37 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
     else if ( pEvent->key() == Qt::Key_Q) {
         return on_exit_clicked() ;
     }
+    else if ( pEvent->key() == Qt::Key_S) {
+        return on_save_clicked() ;
+    }
+    else if ( pEvent->key() == Qt::Key_O) {
+        return on_load_clicked() ;
+    }
 }
 
 //----------------------------------------------------------
 void
 LazyTabsDlg::on_exit_clicked()
 {
-    done( QDialog::Accepted) ;
+
+    if ( ! m_bMod) {
+        done( QDialog::Accepted) ;
+        return ;
+    }
+
+    int nRet = QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
+                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel) ;
+    switch ( nRet) {
+        case QMessageBox::Cancel :
+            return ;
+        case QMessageBox::Yes :
+            on_save_clicked() ;
+            done( QDialog::Accepted) ;
+        break ;
+        case QMessageBox::No :
+            done( QDialog::Accepted) ;
+        break ;
+    }
 }
 
 //----------------------------------------------------------
@@ -232,4 +259,34 @@ LazyTabsDlg::on_save_clicked()
     QTextStream stream( &file) ;
     stream<< ui->songTabs->toPlainText() ;
     file.close() ;
+}
+
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::closeEvent( QCloseEvent* pEvent)
+{
+    if ( pEvent == nullptr) {
+        return ;
+    }
+
+    if ( ! m_bMod) {
+        pEvent->accept();
+    }
+    else {
+        int nRet = QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
+                                          QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel) ;
+        switch ( nRet) {
+            case QMessageBox::Cancel :
+                pEvent->ignore() ;
+            break ;
+            case QMessageBox::Yes :
+                on_save_clicked() ;
+                pEvent->accept() ;
+            break ;
+            case QMessageBox::No :
+                pEvent->accept() ;
+            break ;
+        }
+    }
 }
