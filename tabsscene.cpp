@@ -126,12 +126,16 @@ TabsScene::DrawPos( int nString)
 
     nFret = m_anVals[nString].nVal ;
 
-    if ( nFret > 0) {
+    if ( nFret >= 0) {
         dPos = ( m_anFrets[nFret] + m_anFrets[nFret-1]) * 0.5 ;
+        m_anVals[nString].pSymbol->setBrush( GetValBrush( true));
+        m_anVals[nString].pSymbol->setPos( dPos, m_anVals[nString].pSymbol->pos().y());
+    }
+    else {
+        m_anVals[nString].pSymbol->setBrush( GetValBrush( false));
+        m_anVals[nString].pSymbol->setPos( - m_nStringDst * 0.5, m_anVals[nString].pSymbol->pos().y());
     }
 
-    m_anVals[nString].pSymbol->setBrush( GetValBrush( true));
-    m_anVals[nString].pSymbol->setPos( dPos, m_anVals[nString].pSymbol->pos().y());
 }
 
 //----------------------------------------------------------
