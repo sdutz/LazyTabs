@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <about.h>
 
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
@@ -204,6 +205,9 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
     else if ( pEvent->key() == Qt::Key_T) {
         ui->songTabs->setFocus() ;
     }
+    else if ( pEvent->key() == Qt::Key_H) {
+        on_help_clicked() ;
+    }
 }
 
 //----------------------------------------------------------
@@ -235,6 +239,11 @@ LazyTabsDlg::on_exit_clicked()
 void
 LazyTabsDlg::on_load_clicked()
 {
+    if ( m_bMod  &&  QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
+                                            QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        on_save_clicked() ;
+    }
+
     QString szFile = QFileDialog::getOpenFileName( this, tr( "Select project file"), "", "*.txt") ;
     QString szTuning ;
     QStringList slVals ;
@@ -295,4 +304,25 @@ LazyTabsDlg::closeEvent( QCloseEvent* pEvent)
             break ;
         }
     }
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_help_clicked()
+{
+    About about ;
+
+    about.exec() ;
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_newpr_clicked()
+{
+    if ( m_bMod  &&  QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
+                                            QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        on_save_clicked() ;
+    }
+
+    Init() ;
 }

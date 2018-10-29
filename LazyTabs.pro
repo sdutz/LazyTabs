@@ -29,18 +29,21 @@ SOURCES += \
         tabsscene.cpp \
         settingsdlg.cpp \
         config.cpp \
-    chordparser.cpp
+    chordparser.cpp \
+    about.cpp
 
 HEADERS += \
         lazytabsdlg.h \
         tabsscene.h \
         settingsdlg.h \
         config.h \
-    chordparser.h
+    chordparser.h \
+    about.h
 
 FORMS += \
         lazytabsdlg.ui \
-        settingsdlg.ui
+        settingsdlg.ui \
+    about.ui
 
 RESOURCES += \
         lazytabs.qrc

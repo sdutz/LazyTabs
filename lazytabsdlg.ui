@@ -31,9 +31,9 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>280</y>
+     <y>270</y>
      <width>80</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -60,9 +60,9 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>380</y>
+     <y>350</y>
      <width>80</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -91,7 +91,7 @@
      <x>140</x>
      <y>270</y>
      <width>461</width>
-     <height>281</height>
+     <height>291</height>
     </rect>
    </property>
   </widget>
@@ -99,9 +99,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>480</y>
+     <y>500</y>
      <width>80</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -244,9 +244,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>280</y>
+     <y>350</y>
      <width>80</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -273,9 +273,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>380</y>
+     <y>430</y>
      <width>80</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -302,9 +302,9 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>480</y>
+     <y>510</y>
      <width>80</width>
-     <height>71</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -316,6 +316,64 @@
    <property name="icon">
     <iconset resource="lazytabs.qrc">
      <normaloff>:/png/res/if_icons_exit_1564505.png</normaloff>:/png/res/if_icons_exit_1564505.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="help">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>430</y>
+     <width>80</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Help</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_icon-help_211675.png</normaloff>:/png/res/if_icon-help_211675.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="newpr">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>270</y>
+     <width>80</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>New</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_icon-81-document-add_314764.png</normaloff>:/png/res/if_icon-81-document-add_314764.png</iconset>
    </property>
    <property name="iconSize">
     <size>

@@ -11,6 +11,8 @@
         <file>res/if_icons_exit_1564505.png</file>
         <file>res/if_save_326688.png</file>
         <file>res/if_folder-open_1608888.png</file>
+        <file>res/if_icon-help_211675.png</file>
+        <file>res/if_icon-81-document-add_314764.png</file>
     </qresource>
     <qresource prefix="/translations"/>
     <qresource prefix="/tr">

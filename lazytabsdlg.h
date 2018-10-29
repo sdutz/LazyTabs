@@ -24,6 +24,7 @@ class LazyTabsDlg : public QDialog
         bool Init( bool bFromFile = false) ;
         bool SetLang( bool bInit) ;
         void keyPressEvent( QKeyEvent* pEvent) ;
+        void closeEvent( QCloseEvent* pEvent) ;
 
     private slots:
         void on_addChord_clicked();
@@ -36,7 +37,8 @@ class LazyTabsDlg : public QDialog
         void on_exit_clicked();
         void on_load_clicked();
         void on_save_clicked();
-        void closeEvent( QCloseEvent* pEvent) ;
+        void on_help_clicked();
+        void on_newpr_clicked();
 
 private:
         Ui::LazyTabsDlg *ui;
