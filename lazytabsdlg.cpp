@@ -198,6 +198,12 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
     else if ( pEvent->key() == Qt::Key_O) {
         return on_load_clicked() ;
     }
+    else if ( pEvent->key() == Qt::Key_Escape) {
+        ui->tabsView->setFocus() ;
+    }
+    else if ( pEvent->key() == Qt::Key_T) {
+        ui->songTabs->setFocus() ;
+    }
 }
 
 //----------------------------------------------------------

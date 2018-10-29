@@ -127,7 +127,7 @@
   <widget class="QPushButton" name="leftShift">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>210</x>
      <y>220</y>
      <width>151</width>
      <height>41</height>
@@ -185,7 +185,7 @@
   <widget class="QPushButton" name="reset">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>40</x>
      <y>220</y>
      <width>151</width>
      <height>41</height>
