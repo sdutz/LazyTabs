@@ -290,6 +290,7 @@ LazyTabsDlg::on_save_clicked()
     stream<< ui->songTabs->toPlainText() ;
     file.close() ;
     m_conf.SetPrj( szFile) ;
+    m_bMod = false ;
 }
 
 
