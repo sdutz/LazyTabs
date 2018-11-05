@@ -7,6 +7,15 @@ config::config()
     m_szFretsKey   = "frets" ;
     m_szStringsKey = "strings" ;
     m_szDbFileKey  = "dbfile" ;
+    m_szPrjKey     = "prj" ;
+}
+
+
+//----------------------------------------------------------
+QString
+config::GetPrj( void)
+{
+    return m_set.value( m_szPrjKey, "").toString() ;
 }
 
 //----------------------------------------------------------
@@ -45,12 +54,18 @@ config::SetValues( int nStrings, int nFrets, const QString& szLang, const QStrin
     m_set.setValue( m_szDbFileKey, szDBFile) ;
 }
 
-
 //----------------------------------------------------------
 void
 config::SetStrings( int nStrings)
 {
     m_set.setValue( m_szStringsKey, nStrings) ;
+}
+
+//----------------------------------------------------------
+void
+config::SetPrj( const QString& szPrj)
+{
+    m_set.setValue( m_szPrjKey, szPrj) ;
 }
 
 //----------------------------------------------------------

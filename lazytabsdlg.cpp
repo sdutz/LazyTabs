@@ -11,7 +11,8 @@
 //----------------------------------------------------------
 LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
 {
-    QFont font ;
+    QFont   font ;
+    QString szPrj ;
 
     ui->setupUi(this);
     m_pScene = new TabsScene( this) ;
@@ -21,7 +22,8 @@ LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabs
     ui->tabsView->scale( 1.25, 1.25) ;
     font = ui->songTabs->font() ;
     font.setPointSize( font.pointSize() + 2) ;
-    ui->songTabs->setFont( font);
+    ui->songTabs->setFont( font) ;
+    LoadPrj( m_conf.GetPrj()) ;
 }
 
 //----------------------------------------------------------
@@ -245,10 +247,19 @@ LazyTabsDlg::on_load_clicked()
     }
 
     QString szFile = QFileDialog::getOpenFileName( this, tr( "Select project file"), "", "*.txt") ;
+
+    LoadPrj( szFile) ;
+}
+
+//----------------------------------------------------------
+bool
+LazyTabsDlg::LoadPrj( const QString& szPrj)
+{
     QString szTuning ;
     QStringList slVals ;
     QVector<int>anVals ;
-    if ( ! szFile.isEmpty()  &&  m_parser.parseFile( szFile, &slVals)) {
+
+    if ( ! szPrj.isEmpty()  &&  m_parser.parseFile( szPrj, &slVals)) {
         szTuning = slVals[0].replace( " ", "") ;
         m_conf.SetStrings( szTuning.length()) ;
         Init( true) ;
@@ -258,7 +269,11 @@ LazyTabsDlg::on_load_clicked()
         for ( int n = 1 ;  n < slVals.size() ;  n ++) {
             ui->songTabs->insertPlainText( slVals[n] + "\n") ;
         }
+
+        return true ;
     }
+
+    return false ;
 }
 
 //----------------------------------------------------------
@@ -274,6 +289,7 @@ LazyTabsDlg::on_save_clicked()
     QTextStream stream( &file) ;
     stream<< ui->songTabs->toPlainText() ;
     file.close() ;
+    m_conf.SetPrj( szFile) ;
 }
 
 

@@ -23,6 +23,7 @@ class LazyTabsDlg : public QDialog
     protected:
         bool Init( bool bFromFile = false) ;
         bool SetLang( bool bInit) ;
+        bool LoadPrj( const QString& szFile) ;
         void keyPressEvent( QKeyEvent* pEvent) ;
         void closeEvent( QCloseEvent* pEvent) ;
 
