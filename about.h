@@ -16,10 +16,13 @@ class About : public QDialog
         ~About();
 
     protected:
-        QString PrePareInfo( void) ;
+        QString GetInfo( void) ;
+        void FillShortCutsList( void) ;
+        void mousePressEvent( QMouseEvent* pEvent) ;
 
     private:
-        Ui::About *ui;
+        Ui::About   *ui;
+        QStringList m_lszShortCuts ;
 };
 
 #endif // ABOUT_H
