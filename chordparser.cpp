@@ -20,6 +20,9 @@ chordParser::initMaps( const QString& szDb)
         return false ;
     }
 
+    m_mGuitar.clear() ;
+    m_mUkulele.clear() ;
+
     QStringList slTokens ;
     QTextStream stream( &file) ;
 
