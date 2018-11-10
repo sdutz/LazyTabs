@@ -55,11 +55,12 @@ About::GetInfo( void)
 void
 About::FillShortCutsList( void)
 {
-    m_lszShortCuts.append( "Key a addchord\n") ;
-    m_lszShortCuts.append( "Key c sendtoclip\n") ;
-    m_lszShortCuts.append( "Key i insertchord\n") ;
-    m_lszShortCuts.append( "Key l leftshift\n") ;
-    m_lszShortCuts.append( "Key r rightshift\n") ;
+    m_lszShortCuts.append( "Key a add chord\n") ;
+    m_lszShortCuts.append( "Key d remove last chord\n") ;
+    m_lszShortCuts.append( "Key c send to clip\n") ;
+    m_lszShortCuts.append( "Key i insert chord\n") ;
+    m_lszShortCuts.append( "Key l left shift\n") ;
+    m_lszShortCuts.append( "Key r right shift\n") ;
     m_lszShortCuts.append( "Key z reset\n") ;
     m_lszShortCuts.append( "Key q exit\n") ;
     m_lszShortCuts.append( "Key s save\n") ;
