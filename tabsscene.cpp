@@ -36,7 +36,7 @@ TabsScene::mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent)
         return ;
     }
 
-    m_anVals[nString].nVal = m_anVals[nString].nVal == 0 ? -1 : 0 ;
+    m_anVals[nString].nVal = m_anVals[nString].nVal >= 0 ? -1 : 0 ;
     m_anVals[nString].pSymbol->setBrush( GetValBrush( m_anVals[nString].nVal == 0));
     m_anVals[nString].pSymbol->setPos( - m_nStringDst * 0.5, m_anVals[nString].pSymbol->pos().y());
 }
@@ -100,8 +100,8 @@ TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
 void
 TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
 {
-    int    nFret ;
-    int    nString ;
+    int nFret ;
+    int nString ;
 
     if ( pEvent == nullptr) {
         return ;
@@ -196,7 +196,7 @@ TabsScene::Draw( void)
     ptHigh.setY( static_cast<int>( m_anStrings.last() * 0.66 - dHalf)) ;
 
     foreach (int n, m_anFrets) {
-        addLine(n, m_anStrings.first(), n, m_anStrings.last());
+        addLine( n, m_anStrings.first(), n, m_anStrings.last());
     }
 
     GetSizes(&afSizes);
@@ -216,14 +216,14 @@ TabsScene::Draw( void)
         }
 
         if( n % 12 == 0) {
-            ptHigh.setX( static_cast<int>( ( m_anFrets[n] + m_anFrets[n-1]) * 0.5 - dHalf)) ;
+            ptHigh.setX( static_cast<int>( ( m_anFrets[n] + m_anFrets[n - 1]) * 0.5 - dHalf)) ;
             ptLow.setX( ptHigh.x());
-            addEllipse( QRect(ptHigh, size), cPen, cBrush) ;
-            addEllipse( QRect(ptLow, size), cPen, cBrush) ;
+            addEllipse( QRect( ptHigh, size), cPen, cBrush) ;
+            addEllipse( QRect( ptLow, size), cPen, cBrush) ;
         }
         else if ( n % 2 != 0  ||  n == 1) {
-            ptHalf.setX( static_cast<int>( ( m_anFrets[n] + m_anFrets[n-1]) * 0.5 - dHalf)) ;
-            addEllipse( QRect(ptHalf, size), cPen, cBrush) ;
+            ptHalf.setX( static_cast<int>( ( m_anFrets[n] + m_anFrets[n - 1]) * 0.5 - dHalf)) ;
+            addEllipse( QRect( ptHalf, size), cPen, cBrush) ;
         }
     }
 
@@ -269,7 +269,7 @@ TabsScene::GetSizes( QVector<qreal>* pafSizes)
 
     pafSizes->resize( m_nStrings);
 
-    switch (m_nStrings) {
+    switch ( m_nStrings) {
         case 6:
             (*pafSizes) = { 3., 2.5, 2., 1.5, 1., 0.5, 0.1} ;
             break;
@@ -277,7 +277,7 @@ TabsScene::GetSizes( QVector<qreal>* pafSizes)
             (*pafSizes) = { 0.5, 2., 1., 0.1} ;
             break ;
         default:
-            pafSizes->fill(1) ;
+            pafSizes->fill( 1) ;
             break;
     }
 }
@@ -287,13 +287,13 @@ void
 TabsScene:: Move( bool bLeft)
 {
     for ( int i = 0 ;  i < m_anVals.count() ;  i ++) {
-        if ( bLeft  && m_anVals[i].nVal > 0) {
+        if ( bLeft  &&  m_anVals[i].nVal > 0) {
             m_anVals[i].nVal -- ;
-            DrawPos(i) ;
+            DrawPos( i) ;
         }
         else if ( ! bLeft  &&  m_anVals[i].nVal < m_nFrets - 1) {
             m_anVals[i].nVal ++ ;
-            DrawPos(i) ;
+            DrawPos( i) ;
         }
     }
 }
@@ -347,7 +347,7 @@ TabsScene::SetChord( const QVector<int>& anVals)
 
     for ( int n = 0 ;  n < m_anVals.size() ;  n ++) {
         m_anVals[n].nVal = anVals[n] ;
-        DrawPos(n) ;
+        DrawPos( n) ;
     }
 
     return true ;
