@@ -193,7 +193,7 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
         return on_reset_clicked() ;
     }
     else if ( pEvent->key() == Qt::Key_Q) {
-        return on_exit_clicked() ;
+        close() ;
     }
     else if ( pEvent->key() == Qt::Key_S) {
         return on_save_clicked() ;
@@ -208,32 +208,10 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
         ui->songTabs->setFocus() ;
     }
     else if ( pEvent->key() == Qt::Key_H) {
-        on_help_clicked() ;
+        return on_help_clicked() ;
     }
-}
-
-//----------------------------------------------------------
-void
-LazyTabsDlg::on_exit_clicked()
-{
-
-    if ( ! m_bMod) {
-        done( QDialog::Accepted) ;
-        return ;
-    }
-
-    int nRet = QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
-                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel) ;
-    switch ( nRet) {
-        case QMessageBox::Cancel :
-            return ;
-        case QMessageBox::Yes :
-            on_save_clicked() ;
-            done( QDialog::Accepted) ;
-        break ;
-        case QMessageBox::No :
-            done( QDialog::Accepted) ;
-        break ;
+    else if ( pEvent->key() == Qt::Key_D) {
+        return on_delChord_clicked() ;
     }
 }
 
@@ -255,6 +233,7 @@ LazyTabsDlg::on_load_clicked()
 bool
 LazyTabsDlg::LoadPrj( const QString& szPrj)
 {
+    QString szTitle ;
     QString szTuning ;
     QStringList slVals ;
     QVector<int>anVals ;
@@ -270,6 +249,11 @@ LazyTabsDlg::LoadPrj( const QString& szPrj)
             ui->songTabs->insertPlainText( slVals[n] + "\n") ;
         }
 
+        m_conf.SetPrj( szPrj) ;
+        szTitle = windowTitle() ;
+        szTitle += " - " + szPrj ;
+        setWindowTitle( szTitle) ;
+
         return true ;
     }
 
@@ -280,7 +264,11 @@ LazyTabsDlg::LoadPrj( const QString& szPrj)
 void
 LazyTabsDlg::on_save_clicked()
 {
-    QString szFile = QFileDialog::getSaveFileName( this, tr( "Select project file"), "", "*.txt") ;
+    QString szFile = m_conf.GetPrj() ;
+    if ( szFile.isEmpty()) {
+        szFile = QFileDialog::getSaveFileName( this, tr( "Select project file"), "", "*.txt") ;
+    }
+
     QFile file( szFile) ;
     if ( ! file.open( QIODevice::WriteOnly | QIODevice::Text)) {
         return ;
@@ -342,4 +330,19 @@ LazyTabsDlg::on_newpr_clicked()
     }
 
     Init() ;
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_delChord_clicked()
+{
+    ui->songTabs->setFocus() ;
+    ui->songTabs->moveCursor( QTextCursor::End) ;
+    ui->songTabs->moveCursor( QTextCursor::PreviousCharacter) ;
+    ui->songTabs->moveCursor( QTextCursor::StartOfLine, QTextCursor::KeepAnchor) ;
+    ui->songTabs->textCursor().removeSelectedText() ;
+    ui->songTabs->textCursor().deletePreviousChar() ;
+    ui->songTabs->moveCursor( QTextCursor::End) ;
+
+    m_bMod = true ;
 }

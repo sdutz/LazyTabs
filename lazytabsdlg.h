@@ -35,11 +35,11 @@ class LazyTabsDlg : public QDialog
         void on_rightShift_clicked();
         void on_reset_clicked();
         void on_insertChord_clicked();
-        void on_exit_clicked();
         void on_load_clicked();
         void on_save_clicked();
         void on_help_clicked();
         void on_newpr_clicked();
+        void on_delChord_clicked();
 
 private:
         Ui::LazyTabsDlg *ui;

@@ -8,11 +8,11 @@
         <file>res/if_icon-arrow-right-c_211618.png</file>
         <file>res/if_ic_exposure_zero_48px_352338.png</file>
         <file>res/if_pencil5_216687.png</file>
-        <file>res/if_icons_exit_1564505.png</file>
         <file>res/if_save_326688.png</file>
         <file>res/if_folder-open_1608888.png</file>
         <file>res/if_icon-help_211675.png</file>
         <file>res/if_icon-81-document-add_314764.png</file>
+        <file>res/if_circle-del_226591.png</file>
     </qresource>
     <qresource prefix="/translations"/>
     <qresource prefix="/tr">

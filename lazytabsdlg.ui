@@ -60,7 +60,7 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>350</y>
+     <y>430</y>
      <width>80</width>
      <height>61</height>
     </rect>
@@ -298,40 +298,11 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="exit">
-   <property name="geometry">
-    <rect>
-     <x>620</x>
-     <y>510</y>
-     <width>80</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>Exit</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset resource="lazytabs.qrc">
-     <normaloff>:/png/res/if_icons_exit_1564505.png</normaloff>:/png/res/if_icons_exit_1564505.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>60</width>
-     <height>60</height>
-    </size>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QPushButton" name="help">
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>430</y>
+     <y>510</y>
      <width>80</width>
      <height>61</height>
     </rect>
@@ -374,6 +345,35 @@
    <property name="icon">
     <iconset resource="lazytabs.qrc">
      <normaloff>:/png/res/if_icon-81-document-add_314764.png</normaloff>:/png/res/if_icon-81-document-add_314764.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="delChord">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>350</y>
+     <width>80</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Delete last chord from list</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="lazytabs.qrc">
+     <normaloff>:/png/res/if_circle-del_226591.png</normaloff>:/png/res/if_circle-del_226591.png</iconset>
    </property>
    <property name="iconSize">
     <size>
