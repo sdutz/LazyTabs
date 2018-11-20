@@ -219,12 +219,17 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
 void
 LazyTabsDlg::on_load_clicked()
 {
+    QString szDir ;
+
     if ( m_bMod  &&  QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
                                             QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
         on_save_clicked() ;
     }
 
-    QString szFile = QFileDialog::getOpenFileName( this, tr( "Select project file"), "", "*.txt") ;
+    szDir = m_conf.GetPrj() ;
+    szDir.truncate( szDir.lastIndexOf('/')) ;
+
+    QString szFile = QFileDialog::getOpenFileName( this, tr( "Select project file"), szDir, "*.txt") ;
 
     LoadPrj( szFile) ;
 }
@@ -337,7 +342,6 @@ LazyTabsDlg::on_newpr_clicked()
     if ( nPos > 0) {
         szTitle.truncate( nPos - 1) ;
         setWindowTitle( szTitle) ;
-
     }
 }
 
