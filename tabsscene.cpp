@@ -291,7 +291,7 @@ TabsScene:: Move( bool bLeft)
             m_anVals[i].nVal -- ;
             DrawPos( i) ;
         }
-        else if ( ! bLeft  &&  m_anVals[i].nVal < m_nFrets - 1) {
+        else if ( ! bLeft  &&  m_anVals[i].nVal < m_nFrets - 1  &&  m_anVals[i].nVal >= 0) {
             m_anVals[i].nVal ++ ;
             DrawPos( i) ;
         }
