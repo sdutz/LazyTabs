@@ -330,6 +330,15 @@ LazyTabsDlg::on_newpr_clicked()
     }
 
     Init() ;
+
+    m_conf.SetPrj( "") ;
+    QString szTitle = windowTitle() ;
+    int nPos = szTitle.indexOf('-') ;
+    if ( nPos > 0) {
+        szTitle.truncate( nPos - 1) ;
+        setWindowTitle( szTitle) ;
+
+    }
 }
 
 //----------------------------------------------------------
