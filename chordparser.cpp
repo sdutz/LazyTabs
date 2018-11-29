@@ -54,17 +54,18 @@ chordParser::initMaps( const QString& szDb)
 bool
 chordParser::parse( const QString& szRaw, QVector<int>* pRes)
 {
-    QString szRes ;
     QString szInput ;
 
     if ( szRaw.isEmpty()  ||  pRes == nullptr) {
         return false ;
     }
 
-    QStringList slValues = szRaw.split( " ") ;
+    szInput = szRaw.toLower() ;
+
+    QStringList slValues = szInput.split( " ") ;
     for ( int n = 0 ;  n < slValues.size() ;  n ++) {
         if ( ! slValues[n].isEmpty()) {
-            pRes->append( slValues[n].toInt()) ;
+            pRes->append( ( slValues[n] == 'x') ? -1 : slValues[n].toInt()) ;
         }
     }
 
