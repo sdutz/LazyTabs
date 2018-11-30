@@ -33,14 +33,14 @@ chordParser::initMaps( const QString& szDb)
         }
         QStringList slValues = slTokens[1].split( " ") ;
         for ( int i = 0 ;  i < slValues.size() ;  i ++) {
-            m_mGuitar[slTokens[0]].append( slValues[i].toInt()) ;
+            m_mGuitar[slTokens[0]].append( ToInteger( slValues[i])) ;
         }
 
         if ( slTokens.size() == 3) {
             slValues.clear() ;
             slValues = slTokens[2].split( " ") ;
             for ( int i = 0 ;  i < slValues.size() ;  i ++) {
-                m_mUkulele[slTokens[0]].append( slValues[i].toInt()) ;
+                m_mUkulele[slTokens[0]].append( ToInteger( slValues[i])) ;
             }
         }
     }
@@ -65,7 +65,7 @@ chordParser::parse( const QString& szRaw, QVector<int>* pRes)
     QStringList slValues = szInput.split( " ") ;
     for ( int n = 0 ;  n < slValues.size() ;  n ++) {
         if ( ! slValues[n].isEmpty()) {
-            pRes->append( ( slValues[n] == 'x') ? -1 : slValues[n].toInt()) ;
+            pRes->append( ToInteger( slValues[n])) ;
         }
     }
 
@@ -125,4 +125,11 @@ chordParser::parseFile( const QString& szFile, QStringList* pRes)
     file.close() ;
 
     return true ;
+}
+
+//----------------------------------------------------------
+int
+chordParser::ToInteger( const QString& szVal)
+{
+    return szVal == 'x' ? -1 : szVal.toInt() ;
 }

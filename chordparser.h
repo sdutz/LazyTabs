@@ -19,7 +19,7 @@ class chordParser
         bool parse( const QString& szRaw, chordsMode nMode, QVector<int>* pRes) ;
         bool parseFile( const QString& szFile, QStringList* pRes) ;
     protected :
-
+        int  ToInteger( const QString& szVal) ;
     private :
         QMap<QString,QVector<int>> m_mGuitar ;
         QMap<QString,QVector<int>> m_mUkulele ;
