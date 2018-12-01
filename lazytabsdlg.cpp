@@ -61,7 +61,7 @@ LazyTabsDlg::on_config_clicked()
     settingsdlg setdlg( this) ;
 
     if ( setdlg.exec() == QDialog::Accepted) {
-        Init() ;
+        on_newpr_clicked() ;
         SetLang( false);
     }
 }
@@ -238,8 +238,8 @@ LazyTabsDlg::on_load_clicked()
 bool
 LazyTabsDlg::LoadPrj( const QString& szPrj)
 {
-    QString szTitle ;
-    QString szTuning ;
+    QString     szTitle ;
+    QString     szTuning ;
     QStringList slVals ;
     QVector<int>anVals ;
 

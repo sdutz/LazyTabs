@@ -32,7 +32,7 @@ About::GetInfo( void)
     szContents = "Made by sdutz\n" ;
     szContents += "zambellilorenzo@gmail.com\n" ;
     szContents += "https://github.com/sdutz/LazyTabs\n\n" ;
-    szContents += "Shorcuts list : \n" ;
+    szContents += "Shorcuts list : \n\n" ;
 
     nCount = m_lszShortCuts.count() ;
 
