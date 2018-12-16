@@ -51,3 +51,5 @@ RESOURCES += \
 TRANSLATIONS += \
         LazyTabs_en.ts \
         LazyTabs_it.ts
+
+ICON = guitar.icns
