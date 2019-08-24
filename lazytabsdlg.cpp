@@ -9,13 +9,17 @@
 #include <about.h>
 
 //----------------------------------------------------------
-LazyTabsDlg::LazyTabsDlg(QWidget *parent) : QDialog(parent), ui(new Ui::LazyTabsDlg)
+LazyTabsDlg::LazyTabsDlg( QWidget *parent) : QDialog(parent), ui( new Ui::LazyTabsDlg)
 {
+    bool    bDark ;
     QFont   font ;
+    QColor  col ;
     QString szPrj ;
 
     ui->setupUi(this);
-    m_pScene = new TabsScene( this) ;
+    col = palette().color( backgroundRole()) ;
+    bDark = col.red() < 125  &&  col.green() < 125  &&  col.blue() < 125 ;
+    m_pScene = new TabsScene( bDark, this) ;
     ui->tabsView->setScene( m_pScene) ;
     Init() ;
     SetLang( true) ;

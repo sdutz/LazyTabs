@@ -17,7 +17,7 @@ struct pos {
 class TabsScene : public QGraphicsScene
 {
     public:
-        TabsScene( QObject* pParent = nullptr);
+        TabsScene( bool bDark, QObject* pParent = nullptr);
         void SetData( int nStrings, int nFrets);
         bool Draw( void) ;
         QString GetChord( void) ;
@@ -40,6 +40,7 @@ class TabsScene : public QGraphicsScene
         int          m_nStrings ;
         int          m_nFretDst ;
         int          m_nStringDst ;
+        QColor       m_col ;
         QVector<int> m_anFrets ;
         QVector<int> m_anStrings ;
         QVector<pos> m_anVals ;

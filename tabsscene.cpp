@@ -5,12 +5,14 @@
 #include <QMessageBox>
 
 //----------------------------------------------------------
-TabsScene::TabsScene( QObject* pParent /*= NULL*/) : QGraphicsScene( pParent)
+TabsScene::TabsScene( bool bDark, QObject* pParent /*= NULL*/) :
+                      QGraphicsScene( pParent)
 {
     m_nFrets     = 14 ;
     m_nStrings   = 6 ;
     m_nFretDst   = 60 ;
     m_nStringDst = 10 ;
+    m_col        = bDark ? Qt::white : Qt::black ;
 }
 
 //----------------------------------------------------------
@@ -195,15 +197,18 @@ TabsScene::Draw( void)
     ptHalf.setY( static_cast<int>( m_anStrings.last() * 0.5 - dHalf)) ;
     ptHigh.setY( static_cast<int>( m_anStrings.last() * 0.66 - dHalf)) ;
 
+    cSPen.setColor( m_col) ;
+    cBrush.setColor( m_col) ;
+
     foreach (int n, m_anFrets) {
-        addLine( n, m_anStrings.first(), n, m_anStrings.last());
+        addLine( n, m_anStrings.first(), n, m_anStrings.last(), cSPen) ;
     }
 
-    GetSizes(&afSizes);
+    GetSizes( &afSizes) ;
 
     for ( int n = 0 ;  n < m_nStrings ;  n ++) {
-        cSPen.setWidthF(afSizes[n]);
-        addLine(m_anFrets.first(), m_anStrings[n], m_anFrets.last(), m_anStrings[n], cSPen) ;
+        cSPen.setWidthF( afSizes[n]) ;
+        addLine( m_anFrets.first(), m_anStrings[n], m_anFrets.last(), m_anStrings[n], cSPen) ;
         ptVal.setY( static_cast<int>( m_anStrings[n] - dHalf)) ;
         cPos.pSymbol = addEllipse( QRect( ptVal, size), cPen, cValBrush) ;
         cPos.pSymbol->setZValue( 1);
