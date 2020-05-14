@@ -249,6 +249,7 @@ LazyTabsDlg::LoadPrj( const QString& szPrj)
 
     if ( ! szPrj.isEmpty()  &&  m_parser.parseFile( szPrj, &slVals)) {
         szTuning = slVals[0].replace( " ", "") ;
+        szTuning.remove("#") ;
         m_conf.SetStrings( szTuning.length()) ;
         Init( true) ;
         m_parser.parse( slVals.last(), &anVals) ;
