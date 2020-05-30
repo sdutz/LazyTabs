@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QTextBlock>
 #include <about.h>
 
 //----------------------------------------------------------
@@ -41,6 +42,10 @@ void
 LazyTabsDlg::on_addChord_clicked()
 {
     QString szChord = m_pScene->GetChord() ;
+
+    if ( QApplication::keyboardModifiers()  &  Qt::ShiftModifier) {
+        ui->songTabs->moveCursor( QTextCursor::End) ;
+    }
 
     if ( ! szChord.isEmpty()) {
         ui->songTabs->insertPlainText( szChord + "\n") ;
@@ -291,7 +296,6 @@ LazyTabsDlg::on_save_clicked()
     m_bMod = false ;
 }
 
-
 //----------------------------------------------------------
 void
 LazyTabsDlg::closeEvent( QCloseEvent* pEvent)
@@ -363,4 +367,22 @@ LazyTabsDlg::on_delChord_clicked()
     ui->songTabs->moveCursor( QTextCursor::End) ;
 
     m_bMod = true ;
+}
+
+//----------------------------------------------------------
+void
+LazyTabsDlg::on_songTabs_cursorPositionChanged()
+{
+    QString szRow = ui->songTabs->textCursor().block().text() ;
+
+    if ( szRow.isEmpty()  ||  m_szCurrRow == szRow) {
+        return ;
+    }
+
+    QVector<int> anVals ;
+    if (  m_parser.parse( szRow, &anVals)) {
+        m_pScene->SetChord( anVals) ;
+    }
+
+    m_szCurrRow = szRow ;
 }

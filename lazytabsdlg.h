@@ -41,10 +41,13 @@ class LazyTabsDlg : public QDialog
         void on_newpr_clicked();
         void on_delChord_clicked();
 
+        void on_songTabs_cursorPositionChanged();
+
 private:
         Ui::LazyTabsDlg *ui;
         bool             m_bMod ;
         config           m_conf ;
+        QString          m_szCurrRow ;
         chordParser      m_parser ;
         TabsScene*       m_pScene ;
         QTranslator      m_cLang ;
