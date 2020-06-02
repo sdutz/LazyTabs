@@ -28,8 +28,7 @@ About::GetInfo( void)
     QString      szContents ;
     QVector<int> anUsed ;
 
-
-    szContents = "Made by sdutz\n" ;
+    szContents =  "Made by sdutz\n" ;
     szContents += "zambellilorenzo@gmail.com\n" ;
     szContents += "https://github.com/sdutz/LazyTabs\n\n" ;
     szContents += "Shorcuts list : \n\n" ;
@@ -69,7 +68,6 @@ About::FillShortCutsList( void)
     m_lszShortCuts.append( "Key Escape set focus to  graphic area\n") ;
     m_lszShortCuts.append( "Key h help\n") ;
 }
-
 
 //----------------------------------------------------------
 void

@@ -168,6 +168,19 @@
     <string>...</string>
    </property>
   </widget>
+  <widget class="QCheckBox" name="darkUI">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>140</y>
+     <width>211</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DarkUI (Need restart)</string>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="lazytabs.qrc"/>

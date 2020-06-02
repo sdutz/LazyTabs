@@ -11,7 +11,8 @@ class config
         void GetValues( int* pnStrings, int* pnFrets) ;
         void SetStrings( int nStrings) ;
         void SetPrj( const QString& szPrj) ;
-        void SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile) ;
+        void SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile, bool bDarkUI) ;
+        bool SetDarkUI( void) ;
         QString GetDbFile( void) ;
         QString GetPrj( void) ;
         QStringList GetLangList( void) ;
@@ -22,5 +23,6 @@ class config
         QString   m_szDbFileKey ;
         QString   m_szStringsKey ;
         QString   m_szPrjKey ;
+        QString   m_szDarkUI ;
         QSettings m_set ;
 };

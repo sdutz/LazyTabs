@@ -30,7 +30,8 @@ void
 settingsdlg::on_settingsdlg_accepted()
 {
     m_conf.SetValues( ui->stringsn->value(), ui->fretsn->value(),
-                      ui->langCmb->currentText(), ui->dbEdit->text());
+                      ui->langCmb->currentText(), ui->dbEdit->text(),
+                      ui->darkUI->isChecked());
 }
 
 //----------------------------------------------------------

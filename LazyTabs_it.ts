@@ -58,9 +58,9 @@
     </message>
     <message>
         <location filename="lazytabsdlg.ui" line="294"/>
-        <location filename="lazytabsdlg.cpp" line="224"/>
-        <location filename="lazytabsdlg.cpp" line="302"/>
-        <location filename="lazytabsdlg.cpp" line="332"/>
+        <location filename="lazytabsdlg.cpp" line="233"/>
+        <location filename="lazytabsdlg.cpp" line="311"/>
+        <location filename="lazytabsdlg.cpp" line="341"/>
         <source>Save</source>
         <translation>Salva</translation>
     </message>
@@ -80,26 +80,26 @@
         <translation>Cancella ultimo accordo dalla lista</translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="148"/>
+        <location filename="lazytabsdlg.cpp" line="157"/>
         <source>Type your chord</source>
         <translation>Digita il tuo accordo</translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="148"/>
+        <location filename="lazytabsdlg.cpp" line="157"/>
         <source>eg : D#+</source>
         <translatorcomment>Esempio : D#+</translatorcomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="224"/>
-        <location filename="lazytabsdlg.cpp" line="302"/>
-        <location filename="lazytabsdlg.cpp" line="332"/>
+        <location filename="lazytabsdlg.cpp" line="233"/>
+        <location filename="lazytabsdlg.cpp" line="311"/>
+        <location filename="lazytabsdlg.cpp" line="341"/>
         <source>Do you want to save your progress?</source>
         <translation>Vuoi salvare i tuoi progressi?</translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="232"/>
-        <location filename="lazytabsdlg.cpp" line="274"/>
+        <location filename="lazytabsdlg.cpp" line="241"/>
+        <location filename="lazytabsdlg.cpp" line="284"/>
         <source>Select project file</source>
         <translation>Seleziona file di progetto</translation>
     </message>
@@ -107,12 +107,12 @@
 <context>
     <name>TabsScene</name>
     <message>
-        <location filename="tabsscene.cpp" line="334"/>
+        <location filename="tabsscene.cpp" line="339"/>
         <source>Warning</source>
         <translation>Avviso</translation>
     </message>
     <message>
-        <location filename="tabsscene.cpp" line="335"/>
+        <location filename="tabsscene.cpp" line="340"/>
         <source>this cord will stretch your hand, are you sure it&apos;s correct?</source>
         <translation>Questo accordo sarà faticoso per la tua mano, sicuro sia corretto?</translation>
     </message>
@@ -150,7 +150,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="settingsdlg.cpp" line="40"/>
+        <location filename="settingsdlg.ui" line="181"/>
+        <source>DarkUI (Need restart)</source>
+        <translation>Tema scuro (richiesto riavvio)</translation>
+    </message>
+    <message>
+        <location filename="settingsdlg.cpp" line="41"/>
         <source>Select db file</source>
         <translation>Seleziona il file db</translation>
     </message>

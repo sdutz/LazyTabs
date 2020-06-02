@@ -8,6 +8,7 @@ config::config()
     m_szStringsKey = "strings" ;
     m_szDbFileKey  = "dbfile" ;
     m_szPrjKey     = "prj" ;
+    m_szDarkUI     = "dark" ;
 }
 
 
@@ -16,6 +17,13 @@ QString
 config::GetPrj( void)
 {
     return m_set.value( m_szPrjKey, "").toString() ;
+}
+
+//----------------------------------------------------------
+bool
+config::SetDarkUI( void)
+{
+    return m_set.value( m_szDarkUI, QVariant::fromValue( false)).toBool() ;
 }
 
 //----------------------------------------------------------
@@ -46,12 +54,13 @@ config::GetValues( int* pnStrings, int* pnFrets)
 
 //----------------------------------------------------------
 void
-config::SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile)
+config::SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile, bool bDarkUI)
 {
     m_set.setValue( m_szLangKey, szLang) ;
     m_set.setValue( m_szFretsKey, nFrets) ;
     m_set.setValue( m_szStringsKey, nStrings) ;
     m_set.setValue( m_szDbFileKey, szDBFile) ;
+    m_set.setValue( m_szDarkUI, bDarkUI) ;
 }
 
 //----------------------------------------------------------
