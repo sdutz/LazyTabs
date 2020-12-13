@@ -38,7 +38,7 @@ About::GetInfo( void)
     for ( int n = 0 ;  n < nCount ;  n ++) {
         bGoOn = true ;
         while ( bGoOn) {
-            nCurr = qrand() % nCount ;
+            nCurr = rand() % nCount ;
             if ( ! anUsed.contains( nCurr)) {
                 bGoOn = false ;
                 szContents += m_lszShortCuts[nCurr] ;
