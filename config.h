@@ -8,7 +8,7 @@ class config
     public:
         config();
         QString GetLang( void) ;
-        void GetValues( int* pnStrings, int* pnFrets) ;
+        void GetValues( int& nStrings, int& nFrets) ;
         void SetStrings( int nStrings) ;
         void SetPrj( const QString& szPrj) ;
         void SetValues( int nStrings, int nFrets, const QString& szLang, const QString& szDBFile, bool bDarkUI) ;

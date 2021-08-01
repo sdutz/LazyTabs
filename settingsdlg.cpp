@@ -5,13 +5,11 @@
 //----------------------------------------------------------
 settingsdlg::settingsdlg(QWidget *parent) : QDialog(parent), ui(new Ui::settingsdlg)
 {
-    int     nFrets ;
-    int     nStrings ;
-    QString szLang ;
-
     ui->setupUi(this);
 
-    m_conf.GetValues( &nStrings, &nFrets) ;
+    int     nFrets ;
+    int     nStrings ;
+    m_conf.GetValues( nStrings, nFrets) ;
     ui->fretsn->setValue( nFrets) ;
     ui->stringsn->setValue( nStrings) ;
     ui->langCmb->addItems( m_conf.GetLangList()) ;

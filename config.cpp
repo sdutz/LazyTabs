@@ -11,7 +11,6 @@ config::config()
     m_szDarkUI     = "dark" ;
 }
 
-
 //----------------------------------------------------------
 QString
 config::GetPrj( void)
@@ -42,14 +41,10 @@ config::GetLang( void)
 
 //----------------------------------------------------------
 void
-config::GetValues( int* pnStrings, int* pnFrets)
+config::GetValues( int& nStrings, int& nFrets)
 {
-    if ( pnStrings == nullptr  ||  pnFrets == nullptr) {
-         return ;
-    }
-
-    *pnFrets   = m_set.value( m_szFretsKey, 14).toInt() ;
-    *pnStrings = m_set.value( m_szStringsKey, 6).toInt() ;
+    nFrets   = m_set.value( m_szFretsKey, 14).toInt() ;
+    nStrings = m_set.value( m_szStringsKey, 6).toInt() ;
 }
 
 //----------------------------------------------------------
@@ -81,10 +76,5 @@ config::SetPrj( const QString& szPrj)
 QStringList
 config::GetLangList( void)
 {
-    QStringList lszLangs ;
-
-    lszLangs.append("en");
-    lszLangs.append("it");
-
-    return lszLangs ;
+    return {"en", "it"} ;
 }

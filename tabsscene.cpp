@@ -27,12 +27,11 @@ TabsScene::SetData( int nStrings, int nFrets)
 void
 TabsScene::mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent)
 {
-    int nString ;
-
     if ( pEvent == nullptr){
         return ;
     }
 
+    int nString = 0 ;
     if ( ! Pick( pEvent->scenePos(), &nString)  ||
          m_anVals[nString].pSymbol == nullptr) {
         return ;
@@ -47,14 +46,12 @@ TabsScene::mouseDoubleClickEvent( QGraphicsSceneMouseEvent* pEvent)
 bool
 TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
 {
-    int    nString ;
-    double dPos ;
-
     if ( pnString == nullptr) {
         return false ;
     }
 
-    dPos = ptScene.y() / m_nStringDst ;
+    double dPos = ptScene.y() / m_nStringDst ;
+    int    nString ;
     if ( dPos < - m_nStringDst) {
         return false ;
     }
@@ -102,13 +99,11 @@ TabsScene::Pick( const QPointF& ptScene, int* pnString, int* pnFret /*= NULL*/)
 void
 TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
 {
-    int nFret ;
-    int nString ;
-
     if ( pEvent == nullptr) {
         return ;
     }
-
+    int nFret ;
+    int nString ;
     if ( ! Pick( pEvent->scenePos(), &nString, &nFret)  ||
          m_anVals[nString].pSymbol == nullptr) {
         return ;
@@ -123,10 +118,9 @@ TabsScene::mousePressEvent( QGraphicsSceneMouseEvent* pEvent)
 void
 TabsScene::DrawPos( int nString)
 {
-    int    nFret ;
     double dPos = 0. ;
 
-    nFret = m_anVals[nString].nVal ;
+    int nFret = m_anVals[nString].nVal ;
 
     if ( nFret > 0) {
         dPos = ( m_anFrets[nFret] + m_anFrets[nFret-1]) * 0.5 ;
@@ -172,7 +166,6 @@ TabsScene::Init( void)
 bool
 TabsScene::Draw( void)
 {
-    double dHalf ;
     pos    cPos ;
     QPen   cPen ;
     QPen   cSPen ;
@@ -182,14 +175,13 @@ TabsScene::Draw( void)
     QPoint ptHalf ;
     QPoint ptHigh ;
     QBrush cBrush ;
-    QBrush cValBrush ;
     QVector<qreal> afSizes ;
 
     Init();
 
     cBrush.setStyle( Qt::BrushStyle::SolidPattern);
-    cValBrush = GetValBrush( true) ;
-    dHalf = m_nStringDst * 0.5 ;
+    QBrush cValBrush = GetValBrush( true) ;
+    double dHalf = m_nStringDst * 0.5 ;
     size.setWidth( m_nStringDst) ;
     size.setHeight( m_nStringDst) ;
     ptVal.setX( static_cast<int>( - dHalf)) ;
@@ -317,13 +309,9 @@ TabsScene:: Reset( void)
 bool
 TabsScene::isCurrValid( void)
 {
-    int nMin ;
-    int nMax ;
-    int nMaxDiff ;
-
-    nMax = 0 ;
-    nMin = m_nFrets ;
-    nMaxDiff = m_nStrings == 4 ? 6 : 4 ;
+    int nMax = 0 ;
+    int nMin = m_nFrets ;
+    int nMaxDiff = m_nStrings == 4 ? 6 : 4 ;
 
     foreach ( pos p, m_anVals) {
         if ( p.nVal > 0) {

@@ -15,7 +15,6 @@ LazyTabsDlg::LazyTabsDlg( QWidget *parent) : QDialog(parent), ui( new Ui::LazyTa
     bool    bDark ;
     QFont   font ;
     QColor  col ;
-    QString szPrj ;
 
     ui->setupUi(this);
     col = palette().color( backgroundRole()) ;
@@ -79,14 +78,13 @@ LazyTabsDlg::on_config_clicked()
 bool
 LazyTabsDlg::Init( bool bFromFile)
 {
-    bool bOk ;
-    int  nFrets ;
-    int  nStrings ;
-
     ui->songTabs->clear();
     ui->songTabs->setAlignment( Qt::AlignCenter) ;
     m_parser.initMaps( m_conf.GetDbFile()) ;
-    m_conf.GetValues( &nStrings, &nFrets) ;
+
+    int  nFrets ;
+    int  nStrings ;
+    m_conf.GetValues( nStrings, nFrets) ;
     m_pScene->SetData( nStrings, nFrets) ;
     if ( ! bFromFile) {
         if ( nStrings == 6) {
@@ -97,7 +95,7 @@ LazyTabsDlg::Init( bool bFromFile)
         }
     }
 
-    bOk = m_pScene->Draw() ;
+    bool bOk = m_pScene->Draw() ;
     m_bMod = false ;
 
     return bOk ;
@@ -128,15 +126,12 @@ LazyTabsDlg::on_reset_clicked()
 bool
 LazyTabsDlg::SetLang( bool bInit)
 {
-    bool    bOk ;
-    QString szFile ;
-
-    szFile = QCoreApplication::applicationName() + "_" + m_conf.GetLang() + ".qm" ;
+    QString szFile = QCoreApplication::applicationName() + "_" + m_conf.GetLang() + ".qm" ;
     szFile.replace( " ", "") ;
-    bOk = m_cLang.load( szFile, ":/tr") ;
+    bool bOk = m_cLang.load( szFile, ":/tr") ;
 
     if ( bInit) {
-        bOk = bOk  &&  QCoreApplication::installTranslator( &m_cLang) ;
+        bOk &= QCoreApplication::installTranslator( &m_cLang) ;
     }
 
     return bOk ;
@@ -147,18 +142,17 @@ void
 LazyTabsDlg::on_insertChord_clicked()
 {
     bool         bOk ;
-    int          nVal ;
-    int          nStrings ;
-    chordsMode   nMode ;
-    QString      szVal ;
     QInputDialog cInput ;
-
     cInput.setInputMode( QInputDialog::InputMode::TextInput) ;
-    szVal = cInput.getText( this, tr("Type your chord"), tr("eg : D#+"), QLineEdit::Normal, "", &bOk) ;
+    QString szVal = cInput.getText( this, tr("Type your chord"), tr("eg : D#+"), QLineEdit::Normal, "", &bOk) ;
     if ( ! bOk) {
         return ;
     }
-    m_conf.GetValues( &nStrings, &nVal) ;
+
+    chordsMode   nMode ;
+    int          nVal ;
+    int          nStrings ;
+    m_conf.GetValues( nStrings, nVal) ;
     if ( nStrings == 6) {
         nMode = chordsMode::GUITAR ;
     }
@@ -228,14 +222,12 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
 void
 LazyTabsDlg::on_load_clicked()
 {
-    QString szDir ;
-
     if ( m_bMod  &&  QMessageBox::question( this, tr("Save"), tr("Do you want to save your progress?"),
                                             QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
         on_save_clicked() ;
     }
 
-    szDir = m_conf.GetPrj() ;
+    QString szDir = m_conf.GetPrj() ;
     szDir.truncate( szDir.lastIndexOf('/')) ;
 
     QString szFile = QFileDialog::getOpenFileName( this, tr( "Select project file"), szDir, "*.txt") ;
@@ -247,16 +239,13 @@ LazyTabsDlg::on_load_clicked()
 bool
 LazyTabsDlg::LoadPrj( const QString& szPrj)
 {
-    QString     szTitle ;
-    QString     szTuning ;
     QStringList slVals ;
-    QVector<int>anVals ;
-
     if ( ! szPrj.isEmpty()  &&  m_parser.parseFile( szPrj, &slVals)) {
-        szTuning = slVals[0].replace( " ", "") ;
+        QString szTuning = slVals[0].replace( " ", "") ;
         szTuning.remove("#") ;
         m_conf.SetStrings( szTuning.length()) ;
         Init( true) ;
+        QVector<int>anVals ;
         m_parser.parse( slVals.last(), &anVals) ;
         m_pScene->SetChord( anVals) ;
         ui->songTabs->insertPlainText( slVals[0] + "\n\n") ;
@@ -265,7 +254,7 @@ LazyTabsDlg::LoadPrj( const QString& szPrj)
         }
 
         m_conf.SetPrj( szPrj) ;
-        szTitle = windowTitle() ;
+        QString szTitle = windowTitle() ;
         szTitle += " - " + szPrj ;
         setWindowTitle( szTitle) ;
 

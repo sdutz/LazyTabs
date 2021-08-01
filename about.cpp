@@ -22,23 +22,19 @@ About::~About()
 QString
 About::GetInfo( void)
 {
-    bool         bGoOn ;
-    int          nCurr ;
-    int          nCount ;
-    QString      szContents ;
     QVector<int> anUsed ;
 
-    szContents =  "Made by sdutz\n" ;
+    QString szContents =  "Made by sdutz\n" ;
     szContents += "zambellilorenzo@gmail.com\n" ;
     szContents += "https://github.com/sdutz/LazyTabs\n\n" ;
     szContents += "Shorcuts list : \n\n" ;
 
-    nCount = m_lszShortCuts.count() ;
+    int nCount = m_lszShortCuts.count() ;
 
     for ( int n = 0 ;  n < nCount ;  n ++) {
-        bGoOn = true ;
+        bool bGoOn = true ;
         while ( bGoOn) {
-            nCurr = rand() % nCount ;
+            int nCurr = rand() % nCount ;
             if ( ! anUsed.contains( nCurr)) {
                 bGoOn = false ;
                 szContents += m_lszShortCuts[nCurr] ;
