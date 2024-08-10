@@ -62,6 +62,7 @@ About::FillShortCutsList( void)
     m_lszShortCuts.append( "Key o load\n") ;
     m_lszShortCuts.append( "Key t set focus to text area\n") ;
     m_lszShortCuts.append( "Key Escape set focus to  graphic area\n") ;
+    m_lszShortCuts.append( "Key f repeat\n") ;
     m_lszShortCuts.append( "Key h help\n") ;
 }
 

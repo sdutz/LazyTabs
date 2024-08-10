@@ -1,6 +1,7 @@
 #include "lazytabsdlg.h"
 #include "ui_lazytabsdlg.h"
 #include "settingsdlg.h"
+#include "repeatdlg.h"
 #include <QInputDialog>
 #include <QKeyEvent>
 #include <QFileDialog>
@@ -312,7 +313,7 @@ LazyTabsDlg::closeEvent( QCloseEvent* pEvent)
 void
 LazyTabsDlg::on_help_clicked()
 {
-    About about ;
+    About about(this) ;
 
     about.exec() ;
 }
@@ -356,6 +357,24 @@ LazyTabsDlg::on_delChord_clicked()
 void LazyTabsDlg::on_repeatChord_clicked()
 {
 
+    RepeatDlg rDlg(this) ;
+    if (rDlg.exec() == QDialog::Accepted) {
+        int nStart, nChords, nCount = 0 ;
+        rDlg.getRes( nStart, nChords, nCount) ;
+
+        QStringList lszChords = ui->songTabs->toPlainText().split("\n") ;
+
+        for (int i = 0 ; i < nCount ; i ++) {
+
+            for (int j = nChords ; j > 0 ; j -- ) {
+                ui->songTabs->insertPlainText(lszChords.at(lszChords.size()-j-1) + "\n") ;
+            }
+        }
+
+        ui->songTabs->moveCursor( QTextCursor::End) ;
+
+        m_bMod = true ;
+    }
 
 }
 

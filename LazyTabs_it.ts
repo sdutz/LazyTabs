@@ -58,9 +58,9 @@
     </message>
     <message>
         <location filename="lazytabsdlg.ui" line="294"/>
-        <location filename="lazytabsdlg.cpp" line="233"/>
-        <location filename="lazytabsdlg.cpp" line="311"/>
-        <location filename="lazytabsdlg.cpp" line="341"/>
+        <location filename="lazytabsdlg.cpp" line="220"/>
+        <location filename="lazytabsdlg.cpp" line="295"/>
+        <location filename="lazytabsdlg.cpp" line="325"/>
         <source>Save</source>
         <translation>Salva</translation>
     </message>
@@ -80,39 +80,67 @@
         <translation>Cancella ultimo accordo dalla lista</translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="157"/>
+        <location filename="lazytabsdlg.ui" line="410"/>
+        <source>Repeat chord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="lazytabsdlg.cpp" line="148"/>
         <source>Type your chord</source>
         <translation>Digita il tuo accordo</translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="157"/>
+        <location filename="lazytabsdlg.cpp" line="148"/>
         <source>eg : D#+</source>
         <translatorcomment>Esempio : D#+</translatorcomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="233"/>
-        <location filename="lazytabsdlg.cpp" line="311"/>
-        <location filename="lazytabsdlg.cpp" line="341"/>
+        <location filename="lazytabsdlg.cpp" line="220"/>
+        <location filename="lazytabsdlg.cpp" line="295"/>
+        <location filename="lazytabsdlg.cpp" line="325"/>
         <source>Do you want to save your progress?</source>
         <translation>Vuoi salvare i tuoi progressi?</translation>
     </message>
     <message>
-        <location filename="lazytabsdlg.cpp" line="241"/>
-        <location filename="lazytabsdlg.cpp" line="284"/>
+        <location filename="lazytabsdlg.cpp" line="228"/>
+        <location filename="lazytabsdlg.cpp" line="268"/>
         <source>Select project file</source>
         <translation>Seleziona file di progetto</translation>
     </message>
 </context>
 <context>
+    <name>RepeatDlg</name>
+    <message>
+        <location filename="repeatdlg.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Informazioni</translation>
+    </message>
+    <message>
+        <location filename="repeatdlg.ui" line="42"/>
+        <source>Start from</source>
+        <translation>Inizia da</translation>
+    </message>
+    <message>
+        <location filename="repeatdlg.ui" line="55"/>
+        <source>Chords</source>
+        <translation>Accordi</translation>
+    </message>
+    <message>
+        <location filename="repeatdlg.ui" line="68"/>
+        <source>Count</source>
+        <translation>Ripeti</translation>
+    </message>
+</context>
+<context>
     <name>TabsScene</name>
     <message>
-        <location filename="tabsscene.cpp" line="339"/>
+        <location filename="tabsscene.cpp" line="337"/>
         <source>Warning</source>
         <translation>Avviso</translation>
     </message>
     <message>
-        <location filename="tabsscene.cpp" line="340"/>
+        <location filename="tabsscene.cpp" line="338"/>
         <source>this cord will stretch your hand, are you sure it&apos;s correct?</source>
         <translation>Questo accordo sarà faticoso per la tua mano, sicuro sia corretto?</translation>
     </message>
@@ -155,7 +183,7 @@
         <translation>Tema scuro (richiesto riavvio)</translation>
     </message>
     <message>
-        <location filename="settingsdlg.cpp" line="41"/>
+        <location filename="settingsdlg.cpp" line="39"/>
         <source>Select db file</source>
         <translation>Seleziona il file db</translation>
     </message>

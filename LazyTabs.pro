@@ -24,14 +24,17 @@ HEADERS += about.h \
            chordparser.h \
            config.h \
            lazytabsdlg.h \
+           repeatdlg.h \
            settingsdlg.h \
            tabsscene.h
-FORMS += about.ui lazytabsdlg.ui settingsdlg.ui
+FORMS += about.ui lazytabsdlg.ui settingsdlg.ui \
+    repeatdlg.ui
 SOURCES += about.cpp \
            chordparser.cpp \
            config.cpp \
            lazytabsdlg.cpp \
            main.cpp \
+           repeatdlg.cpp \
            settingsdlg.cpp \
            tabsscene.cpp
 RESOURCES += lazytabs.qrc
