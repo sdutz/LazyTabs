@@ -177,44 +177,38 @@ LazyTabsDlg::keyPressEvent( QKeyEvent* pEvent)
         return ;
     }
 
-    if ( pEvent->key() == Qt::Key_A) {
-        return on_addChord_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_C) {
-        return on_sendToClip_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_I) {
-        return on_insertChord_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_L) {
-        return on_leftShift_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_R) {
-        return on_rightShift_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_Z) {
-        return on_reset_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_Q) {
-        close() ;
-    }
-    else if ( pEvent->key() == Qt::Key_S) {
-        return on_save_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_O) {
-        return on_load_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_Escape) {
-        ui->tabsView->setFocus() ;
-    }
-    else if ( pEvent->key() == Qt::Key_T) {
-        ui->songTabs->setFocus() ;
-    }
-    else if ( pEvent->key() == Qt::Key_H) {
-        return on_help_clicked() ;
-    }
-    else if ( pEvent->key() == Qt::Key_D) {
-        return on_delChord_clicked() ;
+    switch (pEvent->key()) {
+        case Qt::Key_A:
+            return on_addChord_clicked() ;
+        case Qt::Key_C:
+            return on_sendToClip_clicked() ;
+        case Qt::Key_I:
+            return on_insertChord_clicked() ;
+        case Qt::Key_L:
+            return on_leftShift_clicked() ;
+        case Qt::Key_R:
+            return on_rightShift_clicked() ;
+        case Qt::Key_Z:
+            return on_reset_clicked() ;
+        case Qt::Key_Q:
+            close() ;
+            break ;
+        case Qt::Key_S:
+            return on_save_clicked() ;
+        case Qt::Key_O:
+            return on_load_clicked() ;
+        case Qt::Key_Escape:
+            ui->tabsView->setFocus() ;
+            break ;
+        case Qt::Key_T:
+            ui->songTabs->setFocus() ;
+            break ;
+        case Qt::Key_H:
+            return on_help_clicked() ;
+        case Qt::Key_D:
+            return on_delChord_clicked() ;
+        case Qt::Key_F:
+            return on_repeatChord_clicked();
     }
 }
 
@@ -359,6 +353,13 @@ LazyTabsDlg::on_delChord_clicked()
 }
 
 //----------------------------------------------------------
+void LazyTabsDlg::on_repeatChord_clicked()
+{
+
+
+}
+
+//----------------------------------------------------------
 void
 LazyTabsDlg::on_songTabs_cursorPositionChanged()
 {
@@ -375,3 +376,4 @@ LazyTabsDlg::on_songTabs_cursorPositionChanged()
 
     m_szCurrRow = szRow ;
 }
+

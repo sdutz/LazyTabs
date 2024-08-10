@@ -40,10 +40,13 @@ class LazyTabsDlg : public QDialog
         void on_help_clicked();
         void on_newpr_clicked();
         void on_delChord_clicked();
+        void on_repeatChord_clicked();
 
         void on_songTabs_cursorPositionChanged();
 
-private:
+
+
+    private:
         Ui::LazyTabsDlg *ui;
         bool             m_bMod ;
         config           m_conf ;
