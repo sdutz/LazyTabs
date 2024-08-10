@@ -208,6 +208,16 @@ TabsScene::Draw( void)
     }
 
     for ( int n = 0 ;  n < m_nFrets ;  n ++) {
+
+
+        if(n > 0) {
+            int nTxtXPos = static_cast<int>( ( m_anFrets[n] + m_anFrets[n - 1]) * 0.5 - dHalf) ;
+            if ( n > 9) {
+                nTxtXPos -= dHalf * 0.8 ;
+            }
+            addText( QString::number(n))->setPos(nTxtXPos, m_anStrings.first() - 25);
+        }
+
         if ( n % 11 == 0  ||  ( n % 12 == 1  &&  n != 1)) {
             continue ;
         }
