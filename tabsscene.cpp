@@ -151,7 +151,7 @@ TabsScene::Init( void)
     for ( int n = 0 ;  n < m_nFrets ;  n ++) {
         m_anFrets[n] = nPos ;
         nPos += nInc ;
-        nInc -= 3 ;
+        nInc -= 1.5 ;
     }
 
     nInc = 10 ;
