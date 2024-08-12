@@ -366,8 +366,8 @@ void LazyTabsDlg::on_repeatChord_clicked()
 
         for (int i = 0 ; i < nCount ; i ++) {
 
-            for (int j = nChords ; j > 0 ; j -- ) {
-                ui->songTabs->insertPlainText(lszChords.at(lszChords.size()-j-1) + "\n") ;
+            for (int j = 0 ; j < nChords ; j ++ ) {
+                ui->songTabs->insertPlainText(lszChords.at(lszChords.size()-nStart-1+j) + "\n") ;
             }
         }
 

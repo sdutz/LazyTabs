@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     a.setApplicationDisplayName("Lazy Tabs");
-    a.setApplicationVersion( "2.0");
+    a.setApplicationVersion( "2.1");
     a.setOrganizationName("sdutz");
     a.setApplicationName("Lazy Tabs");
 
